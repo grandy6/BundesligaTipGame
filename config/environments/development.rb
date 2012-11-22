@@ -34,4 +34,9 @@ BundesligaTipGame::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #devise
+  #localhost:3000 später in der produvtion.rb zur Domain ändern
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 end
