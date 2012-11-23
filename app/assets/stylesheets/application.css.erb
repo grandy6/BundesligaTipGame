@@ -245,11 +245,20 @@ h2
   font-size: 14px;
 }
 
-#pagebar
+ul 
 {
-  height: 38px;
-  width: 100%;
-  vertical-align: center;
+  list-style: none;
+}
+
+li 
+{
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+p 
+{
+  margin-bottom: 12px;
 }
 
 #user_signin
@@ -258,12 +267,122 @@ h2
   padding: 10px 35px 0 0;
 }
 
-
-#content
+.header 
 {
-  width: 981px;
-  padding: 10px;
+  background-image: url(<%= asset_path 'header-gradiant1.png' %>);
+  background-repeat: repeat-x;
+  background-position: top left;
+  background-color: #dedede;
+}
+
+#header 
+{
+  border-top-width: 8px;
+  border-top-style: solid;
+  border-color: #BBB;
+  background: transparent url(<%= asset_path 'header-gradiant2.png' %>) no-repeat top right;
+  height: 380px;
+}
+
+.maincenter 
+{
+  width: 950px;
   margin: 0 auto;
-  background-color: #fafafa;
+}
+
+.maincenter .titleleft h1
+{
+  font-size: 30px;
+  color: #31B404;
+  float: left;
+  width: 275px;
+  position: relative;
+  top: 20px;
+}
+
+.maincenter .searchfield
+{
+  float: left;
+  width: 400px;
+  position: relative;
+  top: 3px;
+}
+
+.maincenter .user_signin
+{
+  float: left;
+  width: 275px;
+  position: relative;
+  top: 20px;
+  text-align: right;
+}
+
+#holder 
+{
+  padding-bottom: 22px;
+  background: transparent url(<%= asset_path 'holder-shadow.png' %>) no-repeat;
+  background-position: center 325px;
+  top: 80px;
+  position: absolute;
+}
+
+#maincontent 
+{
+  margin-top: 110px;
+  color: #AAA;
+}
+#maincontent .center
+{
+  text-align: center;
+}
+
+#maincontent > ul li h2 
+{
+  font-size: 23px;
+  color: #888;
+  line-height: 1.2;
+  margin-bottom: 11px;
+}
+
+#maincontent > ul 
+{
+  list-style-type: none;
+}
+
+#maincontent > ul li 
+{
+  float: left;
+  width: 200px;
+  min-height: 150px;
+  padding: 0 40px 0 70px;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+#maincontent .contentlineholder 
+{
+  margin: 30px 0;
+  border: solid 1px;
+  border-left: none;
+  border-right: none;
+  padding: 10px 0;
+}
+
+#maincontent .contentlineholder h3 
+{
+  font-style: italic;
+  font-size: 20px;
+  color: #CCC;
+  padding: 5px;
+}
+
+#footcontentline 
+{
+  border-color: #E1E1E1;
+  border-style: solid;
+  border-width: 1px 0;
+  background-color: #EFEFEF;
+  height: 30px;
+  margin: 40px 0 0;
 }
 

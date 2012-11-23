@@ -7,24 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="pagebar">
-		<div id="user_signin">
-			<% if user_signed_in? %>
-				Angemeldet als 
-				<%= link_to current_user.username, edit_user_registration_path, :method => :get %>
-				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
-			<% else %>
-				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
-			<% end %>
+
+	<div class="header">
+		<div id="header">
+			<div class="maincenter">
+				
+				<div class="titleleft">
+					<h1>Tippspiel</h1>
+				</div>
+
+				<div class="searchfield">
+					<input id="search" size="30" type="text"> <img src="<%= asset_path 'icons/search.png' %>" style="width: 16px;">
+				</div>
+
+				<div class="user_signin">
+					<% if user_signed_in? %>
+						Angemeldet als 
+						<%= link_to current_user.username, edit_user_registration_path, :method => :get %>.
+						<%= link_to image_tag('icons/logout.png', :width => 12), destroy_user_session_path, :method => :delete %>
+					<% else %>
+						<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
+					<% end %>
+				</div>
+
+				<div id="holder">
+          <%= image_tag("banner.png") %>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div id="content">
+					
+	<div id="maincontent" class="maincenter">
+		
 		<!-- START devise messageholder -->
-		<p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
+		<div class="center">
+			<p class="notice"><%= notice %></p>
+		  <p class="alert"><%= alert %></p>
+		</div>
 		<!-- END devise messageholder -->
 
 		<%= yield %>
+
+		<div class="contentlineholder">
+			<h3>irgendwas sinnloses ;)</h3>
+		</div>
+		
 	</div>
+	
+	<div id="footcontentline"></div>
+
 </body>
 </html>

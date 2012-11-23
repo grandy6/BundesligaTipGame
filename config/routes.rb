@@ -1,5 +1,13 @@
 BundesligaTipGame::Application.routes.draw do
 
+  get "start/index"
+
+  get "start/ranking"
+
+  get "start/table"
+
+  get "start/scorer"
+
   devise_for :users
 
   get "home/index"

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BundesligaTipGame</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="pagebar">
+		<div id="user_signin">
+			<% if user_signed_in? %>
+				Angemeldet als 
+				<%= link_to current_user.username, edit_user_registration_path, :method => :get %>
+				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
+			<% else %>
+				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
+			<% end %>
+		</div>
+	</div>
+	<div id="content">
+		<!-- START devise messageholder -->
+		<p class="notice"><%= notice %></p>
+	  <p class="alert"><%= alert %></p>
+		<!-- END devise messageholder -->
+		<h1>WICHTIG!!!!</h1>
+		<br>
+		<h1>DIES IST DIE LANDING PAGE</h1>
+		<br>
+		<%= yield %>
+	</div>
+</body>
+</html>
