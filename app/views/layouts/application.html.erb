@@ -10,7 +10,8 @@
 	<div id="pagebar">
 		<div id="user_signin">
 			<% if user_signed_in? %>
-				Angemeldet als <%= current_user.email %>
+				Angemeldet als 
+				<%= link_to current_user.username, edit_user_registration_path, :method => :get %>
 				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
 			<% else %>
 				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
