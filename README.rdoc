@@ -1,6 +1,6 @@
 == To do!
   Admin Rollen für die User müssen hinzugefügt werden, damit nur Admins z.B. nachher 
-  andere User löschen können oder (falls gebraucht) News posten können.
+  andere User löschen können oder (falls gebraucht) News posten können. (tk) 
 
 
 
