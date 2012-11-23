@@ -7,20 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="user_signin">
-		<% if user_signed_in? %>
-			Angemeldet als <%= current_user.email %>
-			<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
-		<% else %>
-			<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
-		<% end %>
+	<div id="pagebar">
+		<div id="user_signin">
+			<% if user_signed_in? %>
+				Angemeldet als <%= current_user.email %>
+				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
+			<% else %>
+				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
+			<% end %>
+		</div>
 	</div>
-	<!-- START devise messageholder -->
-	<p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-	<!-- END devise messageholder -->
+	<div id="content">
+		<!-- START devise messageholder -->
+		<p class="notice"><%= notice %></p>
+	  <p class="alert"><%= alert %></p>
+		<!-- END devise messageholder -->
 
-	<%= yield %>
-
+		<%= yield %>
+	</div>
 </body>
 </html>
