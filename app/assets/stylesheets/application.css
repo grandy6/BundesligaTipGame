@@ -115,6 +115,25 @@ a:hover
 
 /** END CLEARFIX **/
 
+#pagebar
+{
+  height: 38px;
+  width: 100%;
+  vertical-align: center;
+}
+
+#user_signin
+{
+  text-align: right;
+  padding: 10px 35px 0 0;
+}
 
 
+#content
+{
+  width: 981px;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #fafafa;
+}
 
