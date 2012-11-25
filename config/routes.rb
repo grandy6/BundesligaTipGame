@@ -1,5 +1,15 @@
 BundesligaTipGame::Application.routes.draw do
 
+  get "wsdl/get_all_for_new_saison"
+
+  get "wsdl/get_teams_by_league_saison"
+
+  get "wsdl/get_matchdata_by_league_saison"
+
+  get "wsdl/get_current_group"
+
+  get "wsdl/get_match_by_match_id"
+
   get "start/index"
 
   get "start/ranking"

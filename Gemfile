@@ -12,7 +12,8 @@ gem 'devise'
 
 #Webservice
 gem 'savon'
-# :avalible actions
+# avalible actions:
+# -------------------
 # :get_avail_leagues
 # :get_next_match
 # :get_last_match
