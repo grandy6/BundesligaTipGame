@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  match_number: 1
+  match_date_time: 2012-11-25 19:11:57
+  time_zone_id: MyString
+  match_date_time_utc: 2012-11-25 19:11:57
+  group_id: 1
+  group_order_id: 1
+  group_name: MyString
+  league_id: 1
+  league_name: MyString
+  league_shortcut: MyString
+  name_tema1: MyString
+  name_team2: MyString
+  id_team1: 1
+  id_team2: 1
+  icon_url_team1: MyString
+  icon_url_team2: MyString
+  points_team1: 1
+  points_team2: 1
+  last_update: 2012-11-25 19:11:57
+  match_is_finished: false
+
+two:
+  match_number: 1
+  match_date_time: 2012-11-25 19:11:57
+  time_zone_id: MyString
+  match_date_time_utc: 2012-11-25 19:11:57
+  group_id: 1
+  group_order_id: 1
+  group_name: MyString
+  league_id: 1
+  league_name: MyString
+  league_shortcut: MyString
+  name_tema1: MyString
+  name_team2: MyString
+  id_team1: 1
+  id_team2: 1
+  icon_url_team1: MyString
+  icon_url_team2: MyString
+  points_team1: 1
+  points_team2: 1
+  last_update: 2012-11-25 19:11:57
+  match_is_finished: false

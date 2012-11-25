@@ -1,5 +1,7 @@
 BundesligaTipGame::Application.routes.draw do
 
+  get "wsdl/update_and_evaluate"
+
   get "wsdl/get_all_for_new_saison"
 
   get "wsdl/get_teams_by_league_saison"

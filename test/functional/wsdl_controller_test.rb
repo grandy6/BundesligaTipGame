@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class WsdlControllerTest < ActionController::TestCase
-  test "should get get_all_for_new_saison" do
-    get :get_all_for_new_saison
+  test "should get update_and_evaluate" do
+    get :update_and_evaluate
     assert_response :success
   end
 

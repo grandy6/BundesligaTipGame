@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team_number: 1
+  team_name: MyString
+  team_icon_url: MyString
+
+two:
+  team_number: 1
+  team_name: MyString
+  team_icon_url: MyString

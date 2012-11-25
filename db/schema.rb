@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123140645) do
+ActiveRecord::Schema.define(:version => 20121125181157) do
+
+  create_table "matches", :force => true do |t|
+    t.integer  "match_number"
+    t.datetime "match_date_time"
+    t.string   "time_zone_id"
+    t.datetime "match_date_time_utc"
+    t.integer  "group_id"
+    t.integer  "group_order_id"
+    t.string   "group_name"
+    t.integer  "league_id"
+    t.string   "league_name"
+    t.string   "league_shortcut"
+    t.string   "name_tema1"
+    t.string   "name_team2"
+    t.integer  "id_team1"
+    t.integer  "id_team2"
+    t.string   "icon_url_team1"
+    t.string   "icon_url_team2"
+    t.integer  "points_team1"
+    t.integer  "points_team2"
+    t.datetime "last_update"
+    t.boolean  "match_is_finished"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "soccerteams", :force => true do |t|
+    t.integer  "team_number"
+    t.string   "team_name"
+    t.string   "team_icon_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
