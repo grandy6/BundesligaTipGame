@@ -1,1 +1,5 @@
-<%= @output.html_safe %>
+<% if can? :read, @output %>
+	<%= @output.html_safe %>
+	<% else %>
+	Penis.
+	<% end %>

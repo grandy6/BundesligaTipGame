@@ -10,13 +10,13 @@ class WsdlController < ApplicationController
 	end
 
 	def get_all_for_new_saison
-  	if @client.nil?
-  		connect
-  	end
-
-		get_teams_by_league_saison
-		get_matchdata_by_league_saison
-	end
+      authorize! :show, @output, :message => "Unable to read this article."
+    	if @client.nil?
+    		connect
+    	end
+  		get_teams_by_league_saison
+  		get_matchdata_by_league_saison
+  end
 
 	def update_and_evaluate
   	if @client.nil?
