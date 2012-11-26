@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  liga_id: 1
+  liga_short: MyString
+  liga_saison: 1
+  last_change: 2012-11-26 17:44:42
+
+two:
+  liga_id: 1
+  liga_short: MyString
+  liga_saison: 1
+  last_change: 2012-11-26 17:44:42

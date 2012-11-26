@@ -1,6 +1,8 @@
 class WsdlController < ApplicationController
+  
+	def connect 
+    @setting = Setting.first
 
-	def connect
 		@client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		@output = ""
 	end
@@ -18,17 +20,19 @@ class WsdlController < ApplicationController
   	if @client.nil?
       connect
     end
-    response = @client.request :get_last_change_date_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+    response = @client.request :get_last_change_date_by_league_saison, body: { leagueShortcut: @setting.league_short, leagueSaison: @setting.league_saison }
 
     if response.success?
       data = response.to_hash[:get_last_change_date_by_league_saison_response][:get_last_change_date_by_league_saison_result]
       if data
-        if data != $last_change
+        if data.to_s(:db) > @setting.last_change.to_s(:db)
           update_matchdata
 
           @output += "&Auml;nderungen gespeichert!"
+          @output += "<br><br>setting date: " + @setting.last_change.to_s(:db) + "<br>wsdl date: " + data.to_s(:db)
 
-          $last_change = data
+          @setting.last_change = data
+          @setting.save
         else
           @output += "Keine &Auml;nderung vorhanden!"
         end
@@ -42,7 +46,7 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	response = @client.request :get_teams_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	response = @client.request :get_teams_by_league_saison, body: { leagueShortcut: @setting.league_short, leagueSaison: @setting.league_saison }
   	if response.success?
       data = response.to_array(:get_teams_by_league_saison_response, :get_teams_by_league_saison_result, :team)
       if data
@@ -67,7 +71,7 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: @setting.league_short, leagueSaison: @setting.league_saison }
   	if response.success?
       data = response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
       if data
@@ -115,7 +119,7 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: @setting.league_short, leagueSaison: @setting.league_saison }
   	if response.success?
       data = response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
       if data
