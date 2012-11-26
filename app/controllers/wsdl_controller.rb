@@ -1,9 +1,5 @@
 class WsdlController < ApplicationController
 
-	$liga_id = 456
-	$liga_short = "bl1"
-	$saison = 2012
-
 	def connect
 		@client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		@output = ""
@@ -22,13 +18,23 @@ class WsdlController < ApplicationController
   	if @client.nil?
       connect
     end
-    @response = @client.request :get_last_change_date_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+    response = @client.request :get_last_change_date_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
 
-    #holt das letze änderungsdatum. dieses kann man mit der letzen updatezeit (die man irgendwo speichert) verglichen werden
-    #wenn dieses datum neuer als das vorher gespeicherte, dann kann ein update geholt werden
-    #somit spart man sich viel traffic
+    if response.success?
+      data = response.to_hash[:get_last_change_date_by_league_saison_response][:get_last_change_date_by_league_saison_result]
+      if data
+        if data != $last_change
+          update_matchdata
 
-		update_matchdata
+          @output += "&Auml;nderungen gespeichert!"
+
+          $last_change = data
+        else
+          @output += "Keine &Auml;nderung vorhanden!"
+        end
+
+      end
+    end
 	end
 
 
@@ -36,9 +42,9 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	@response = @client.request :get_teams_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
-  	if @response.success?
-      data = @response.to_array(:get_teams_by_league_saison_response, :get_teams_by_league_saison_result, :team)
+  	response = @client.request :get_teams_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	if response.success?
+      data = response.to_array(:get_teams_by_league_saison_response, :get_teams_by_league_saison_result, :team)
       if data
       	@output += "<br><br><br><b>ALL TEAMS:</b><br><br>"
         data.each do |current_team|
@@ -61,9 +67,9 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	@response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
-  	if @response.success?
-      data = @response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
+  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	if response.success?
+      data = response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
       if data
       	@output += "<br><br><br><b>ALL MATCHES:</b><br><br>"
         data.each do |current_match|
@@ -109,15 +115,15 @@ class WsdlController < ApplicationController
   	if @client.nil?
   		connect
   	end
-  	@response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
-  	if @response.success?
-      data = @response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
+  	response = @client.request :get_matchdata_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
+  	if response.success?
+      data = response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)
       if data
-      	@output += "<br><br><br><b>ALL MATCHES:</b><br><br>"
         data.each do |current_match|
         	
         	@tmp = Match.find_by_match_number(current_match[:match_id])
 
+          @tmp.match_date_time = current_match[:match_date_time]
         	@tmp.points_team1 = current_match[:points_team1]
         	@tmp.points_team2 = current_match[:points_team2]
         	@tmp.last_update = current_match[:last_update]
@@ -130,8 +136,6 @@ class WsdlController < ApplicationController
         	#location = current_match[:location]
 
         	@tmp.save
-
-        	@output += @tmp.name_team1 + " - " + @tmp.name_team2 + "<br>"
         end
       end
     end
