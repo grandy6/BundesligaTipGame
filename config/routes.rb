@@ -1,24 +1,14 @@
 BundesligaTipGame::Application.routes.draw do
 
+  get "start/team"
+
+  post "start/team"
+
   get "wsdl/update_and_evaluate"
 
   get "wsdl/get_all_for_new_saison"
 
-  get "wsdl/get_teams_by_league_saison"
-
-  get "wsdl/get_matchdata_by_league_saison"
-
-  get "wsdl/get_current_group"
-
-  get "wsdl/get_match_by_match_id"
-
   get "start/index"
-
-  get "start/ranking"
-
-  get "start/table"
-
-  get "start/scorer"
 
   devise_for :users
 

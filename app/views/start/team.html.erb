@@ -1,0 +1,35 @@
+<% 	has_team = current_user.team_id %>
+<!-- 
+	User ist noch in keinem Team
+	User kann: 
+		- Teams suchen und Anfragen senden
+		- neues Team erstellen 
+-->
+<% 
+	if has_team.nil?
+%>
+kein team
+
+<div id="form_holder">
+	<h2>Team gr&uuml;nden:</h2>
+
+	<%= form_for @team, :url => { :action => "team" } do |f| %>
+		
+	  <div><%= f.label :name %><br />
+	  <%= f.text_field :name %></div>
+
+	  <div><%= f.submit "Gr&uuml;nden".html_safe %></div>
+	<% end %>
+
+</div>
+
+
+<!-- 	
+	User ist in einem Team
+	User kann:
+		- Team verlassen
+		- Teams suchen 
+-->
+<% else %>
+<%= Team.find(current_user.team_id).name %>
+<% end %>
