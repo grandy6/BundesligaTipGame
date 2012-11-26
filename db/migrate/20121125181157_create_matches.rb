@@ -12,7 +12,7 @@ class CreateMatches < ActiveRecord::Migration
       t.string :league_name
       t.string :league_saison
       t.string :league_shortcut
-      t.string :name_tema1
+      t.string :name_team1
       t.string :name_team2
       t.integer :id_team1
       t.integer :id_team2
