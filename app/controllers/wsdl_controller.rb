@@ -1,5 +1,4 @@
 class WsdlController < ApplicationController
-
 	$liga_id = 456
 	$liga_short = "bl1"
 	$saison = 2012
@@ -10,12 +9,14 @@ class WsdlController < ApplicationController
 	end
 
 	def get_all_for_new_saison
-      authorize! :show, @output, :message => "Unable to read this article."
+    authorize! :read, @user, :message => "Unable to read this article."
+     if can? :read, @user
     	if @client.nil?
     		connect
     	end
   		get_teams_by_league_saison
   		get_matchdata_by_league_saison
+    end 
   end
 
 	def update_and_evaluate

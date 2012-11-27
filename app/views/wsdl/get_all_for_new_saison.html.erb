@@ -1,5 +1,5 @@
-<% if can? :read, @output %>
-	<%= @output.html_safe %>
-	<% else %>
-	Penis.
-	<% end %>
+<% if can? :read, @user %>
+<%= @output.html_safe %>
+<% else %>
+Olololo.
+<% end %>
