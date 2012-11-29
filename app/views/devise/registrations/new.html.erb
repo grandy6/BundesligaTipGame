@@ -4,28 +4,41 @@
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 	  <%= devise_error_messages! %>
 
-	  <div><%= f.label :email %><br />
-	  <%= f.email_field :email %></div>
+	 	<div>
+	  		<%= f.label :email %><br />
+	  		<%= f.email_field :email %>
+	  	</div>
 
-		<div><%= f.label :username %><br />
-		<%= f.text_field :username %></div>
+		<div>
+			<%= f.label :username %><br />
+			<%= f.text_field :username %>
+		</div>
 
-		<div><%= f.label :firstname %><br />
-		<%= f.text_field :firstname %></div>
+		<div>
+			<%= f.label :firstname %><br />
+			<%= f.text_field :firstname %>
+		</div>
 
-		<div><%= f.label :lastname %><br />
-		<%= f.text_field :lastname %></div><div>
-			<p> 
-				<%= f.label :birthday %><br />
-    			<%= f.date_select :birthday, :start_year=>1900 %>
-      </div>
-	  <div><%= f.label :password %><br />
-	  <%= f.password_field :password %></div>
+		<div>
+			<%= f.label :lastname %><br />
+			<%= f.text_field :lastname %>
+		</div>
+		<div>	
+			<%= f.label :birthday %><br />
+	    	<%= f.date_select :birthday, :start_year=>1900 %>
+	    </div>
+		<div>
+	      	<%= f.label :password %><br />
+		  	<%= f.password_field :password %>
+		</div>
+	    <div>
+	  	  	<%= f.label :password_confirmation %><br />
+	  		<%= f.password_field :password_confirmation %>
+	    </div>
 
-	  <div><%= f.label :password_confirmation %><br />
-	  <%= f.password_field :password_confirmation %></div>
-
-	  <div><%= f.submit "Sign up" %></div>
+	  <div>
+	  		<%= f.submit "Sign up" %>
+	  </div>
 	<% end %>
 
 	<%= render "devise/shared/links" %>

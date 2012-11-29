@@ -1,5 +1,7 @@
 BundesligaTipGame::Application.routes.draw do
 
+  resources :messages
+  devise_for :users
   get "wsdl/update_and_evaluate"
 
   get "wsdl/get_all_for_new_saison"
@@ -19,8 +21,6 @@ BundesligaTipGame::Application.routes.draw do
   get "start/table"
 
   get "start/scorer"
-
-  devise_for :users
 
   get "home/index"
   root :to => "home#index"

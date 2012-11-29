@@ -6,13 +6,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :firstname, :lastname, :birthday
-  # attr_accessible :title, :body
-  
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :firstname, :lastname, :birthday, :role_id
+
   validates_uniqueness_of :username
   has_and_belongs_to_many :roles
+  has_many :user_messages
+  has_many :messages, through: :user_messages
   def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
+    self.roles.exists?(:name => role.to_s)
+  end
 end
-end
-  
+    
