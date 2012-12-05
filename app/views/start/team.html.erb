@@ -1,35 +1,85 @@
-<% 	has_team = current_user.team_id %>
+<% 	current_team_id = current_user.team_id %>
 <!-- 
 	User ist noch in keinem Team
 	User kann: 
 		- Teams suchen und Anfragen senden
 		- neues Team erstellen 
 -->
-<% 
-	if has_team.nil?
-%>
-kein team
 
-<div id="form_holder">
-	<h2>Team gr&uuml;nden:</h2>
+<div id="content_holder">
+	<% 
+		if current_team_id.nil?
+	%>
+	<p>Du geh&ouml;rst momentan keinem Team an. Gr&uuml;nde ein neues Team oder trete einem vorhanden Team bei.</p><br />
 
-	<%= form_for @team, :url => { :action => "team" } do |f| %>
-		
-	  <div><%= f.label :name %><br />
-	  <%= f.text_field :name %></div>
+	<div id="form_holder">
+		<h2>Team gr&uuml;nden:</h2>
 
-	  <div><%= f.submit "Gr&uuml;nden".html_safe %></div>
+		<%= form_for @team, :url => { :action => "team" } do |f| %>
+			
+		  <div><%= f.label :name %><br />
+		  <%= f.text_field :name %></div>
+
+		  <div><%= f.check_box :is_public %> &ouml;ffentliches Team</div>
+
+		  <div><%= f.submit "Gr&uuml;nden".html_safe %></div>
+		<% end %>
+		<% 
+			allPublicTeam = Team.where("is_public = 1") 
+			if allPublicTeam.size > 0
+		%>
+			<h2>&Ouml;ffentlicher Gruppe beitreten:</h2>
+			<% allPublicTeam.each do |t| %>
+				<div class="row">
+				<div style="width:65%; float:left;">
+					<strong>Teamname</strong>
+				</div>
+				<div style="width:20%; float:left;">
+					<strong>Mitglieder</strong>
+				</div>
+				<div style="clear:both"></div>
+
+				<div style="width:65%; float:left;">
+					<%=	t.name %>
+				</div>
+				<div style="width:20%; float:left; text-align: center;">
+					<%= t.users.size %>
+				</div>
+				<div>
+					<%= link_to "beitreten", start_team_path(:t => Encode.new.encrypt(t.id.to_s), :u => Encode.new.encrypt(current_user.id.to_s)) %>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<% end %>
+		<% end %>
+	</div>
+
+
+	<!-- 	
+		User ist in einem Team
+		User kann:
+			- Team verlassen
+			- Teams suchen 
+	-->
+	<% else %>
+		<h3><%= current_user.team.name %></h3>
+		<!-- Alle Mitglieder dieses Teams -->
+		<% list_of_merbers = Team.find(current_team_id).users %>
+		<% list_of_merbers.each do |m| %>
+		<div class="row">
+			<div style="width:50%; float:left">
+				<%=	m.username %>
+			</div>
+			<div style="width:20%; float:right">
+				0 Pkt.
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<% end %>
+		<div>
+			<%= link_to "Gruppe verlassen", start_team_path(:d => Encode.new.encrypt(current_team_id.to_s)) %>
+		</div>
+
 	<% end %>
-
 </div>
 
-
-<!-- 	
-	User ist in einem Team
-	User kann:
-		- Team verlassen
-		- Teams suchen 
--->
-<% else %>
-<%= Team.find(current_user.team_id).name %>
-<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126214045) do
+ActiveRecord::Schema.define(:version => 20121204131247) do
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20121126214045) do
     t.integer  "owner_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "is_public"
   end
 
   create_table "users", :force => true do |t|

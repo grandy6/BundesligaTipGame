@@ -5,7 +5,7 @@
 		<p>Gebe hier deine Tipps für die n&auml;chsten Spiele ab!</p>
 	</li>
 	<li style="background-image: url(<%= asset_path 'icons/group.png' %>);">
-		<h2>Meine Tippgemeinschaft</h2>
+		<h2><%= link_to "Meine Tippgemeinschaft", start_team_path %></h2>
 		<p>Wie gut bist du in deiner Tippgemeinschaft?</p>
 	</li>
 	<li style="background-image: url(<%= asset_path 'icons/number_list.png' %>);">
@@ -17,7 +17,7 @@
 		<p>Aktuelle Tabelle, Torj&auml;ger, Rote/Gelbe Karten</p>
 	</li>
 	<li style="background-image: url(<%= asset_path 'icons/profil.png' %>);">
-		<h2>Mein Profil</h2>
+		<h2><%= link_to "Mein Profil", edit_user_registration_path %></h2>
 		<p>Bearbeite hier dein Profil!</p>
 	</li>
 </ul>

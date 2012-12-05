@@ -3,6 +3,7 @@ class StartController < ApplicationController
   end
 
   def team
+  	# Team gründen
   	if params.has_key?(:team)
 	  	@team = Team.new(params[:team])
 	  	@team.owner_id = current_user.id
@@ -20,7 +21,25 @@ class StartController < ApplicationController
 	        format.json { render json: @team.errors, status: :unprocessable_entity }
 	      end
 	    end
+	  # einem Team beitreten
+	  elsif params.has_key?(:t)
+	  	@user = User.find(Encode.new.decrypt(params[:u]))
+	  	if @user.team_id.nil?
+		  	@user.team_id = Encode.new.decrypt(params[:t])
+		  	@user.save
+		  end	  
+	  # Team verlassen
+	  elsif params.has_key?(:d)
+	  	current_user.team_id = nil
+	  	current_user.save
 
+	  	current_team = Team.find(Encode.new.decrypt(params[:d]))
+	  	
+	  	if current_team.users.size == 0
+	  		current_team.destroy
+  		end
+
+	  	redirect_to start_team_path
 	  else
 	  	@team = Team.new
 

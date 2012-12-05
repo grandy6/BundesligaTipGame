@@ -10,7 +10,15 @@ BundesligaTipGame::Application.routes.draw do
 
   get "start/index"
 
-  devise_for :users
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get 'login' => 'devise/sessions#new', as: :new_user_session
+    post 'login' => 'devise/sessions#create', as: :user_session
+    delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
+
+    get 'register' => 'devise/registrations#new', as: :new_user_registration
+    get 'profil' => 'devise/registrations#edit', as: :edit_user_registration
+  end
 
   get "home/index"
   root :to => "home#index"

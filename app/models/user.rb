@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   validates_uniqueness_of :username
+  belongs_to :team
 end
