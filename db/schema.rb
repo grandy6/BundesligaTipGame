@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204131247) do
+ActiveRecord::Schema.define(:version => 20121206200404) do
+
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
     t.datetime "match_date_time"
@@ -38,15 +39,6 @@ ActiveRecord::Schema.define(:version => 20121204131247) do
     t.datetime "updated_at",          :null => false
   end
 
-  create_table "settings", :force => true do |t|
-    t.integer  "league_id"
-    t.string   "league_short"
-    t.string   "league_saison"
-    t.datetime "last_change"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-  
   create_table "messages", :force => true do |t|
     t.string   "from"
     t.string   "to"
@@ -65,6 +57,32 @@ ActiveRecord::Schema.define(:version => 20121204131247) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.integer  "league_id"
+    t.string   "league_short"
+    t.string   "league_saison"
+    t.datetime "last_change"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "color_input"
+    t.string   "color_input_border"
+    t.string   "color_input_shadow"
+    t.string   "color_input_border_hover"
+    t.string   "color_input_shadow_hover"
+    t.string   "color_input_border_focus"
+    t.string   "color_input_shadow_focus"
+    t.string   "color_input_submit"
+    t.string   "color_input_submit_background_top"
+    t.string   "color_input_submit_background_bottom"
+    t.string   "color_input_submit_background_hover"
+    t.string   "color_title"
+    t.string   "color_main"
+    t.string   "color_main_h2"
+    t.string   "color_main_h3"
+    t.string   "color_notice_background"
+    t.string   "color_alert_background"
   end
 
   create_table "soccerteams", :force => true do |t|
@@ -115,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20121204131247) do
     t.string   "lastname"
     t.date     "birthday"
     t.integer  "team_id"
+    t.string   "role"
     t.integer  "role_id"
   end
 

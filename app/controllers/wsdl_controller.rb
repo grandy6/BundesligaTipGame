@@ -2,7 +2,6 @@ class WsdlController < ApplicationController
  authorize_resource :class => false
  
 	def connect 
-    @setting = Setting.first
 		@client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		@output = ""
 	end

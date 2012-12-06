@@ -1,15 +1,5 @@
 BundesligaTipGame::Application.routes.draw do
   resources :messages, :userhelper
-  get "wsdl/update_and_evaluate"
-
-  get "wsdl/get_all_for_new_saison"
-
-  get "wsdl/get_teams_by_league_saison"
-
-  get "start/team"
-  post "start/team"
-
-  get "start/index"
 
   devise_for :users, :skip => [:sessions]
   as :user do
@@ -18,12 +8,28 @@ BundesligaTipGame::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
 
     get 'register' => 'devise/registrations#new', as: :new_user_registration
-    get 'profil' => 'devise/registrations#edit', as: :edit_user_registration
+    get 'profile' => 'devise/registrations#edit', as: :edit_user_registration
   end
+
+  get "wsdl/update_and_evaluate"
+  get "wsdl/get_all_for_new_saison"
+  get "wsdl/get_teams_by_league_saison"
+
   get "getusers/show"
   get "getusers/get"
 
   get "home/index"
+  match "home" => "home#index"
+
+  get "start/index"
+  match "start" => "start#index"
+ 
+  get "start/team"
+  match "team" => "start#team"
+
+  post "start/team"
+  match "team" => "start#team"
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:

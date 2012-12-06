@@ -14,13 +14,15 @@
 
 /** START BROWSER REST **/
 
+<% @setting = Setting.first %>
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
 {
   margin:0;
   padding:0;
   border:0;
   font-size:100%;
-  color: #555;
+  color: <%= @setting.color_body %>;
   font:inherit;
   vertical-align:baseline;
   outline:none;
@@ -164,15 +166,15 @@ input {
 input[type=text],
 input[type=email],
 input[type=password] {
-  color: #777;
+  color: <%= @setting.color_input %>;
   padding-left: 10px;
   margin: 10px 10px 10px 0;
   margin-top: 12px;
   width: 350px;
   height: 25px;
-  border: 1px solid #c7d0d2;
+  border: 1px solid <%= @setting.color_input_border %>;
   border-radius: 2px;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px <%= @setting.color_input_shadow %>;
   -webkit-transition: all .4s ease;
   -moz-transition: all .4s ease;
   transition: all .4s ease;
@@ -180,14 +182,14 @@ input[type=password] {
 input[type=text]:hover,
 input[type=email]:hover,
 input[type=password]:hover {
-  border: 1px solid #b6bfc0;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+  border: 1px solid <%= @setting.color_input_border_hover %>;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px <%= @setting.color_input_shadow_hover %>;
 }
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  border: 1px solid #a8c9e4;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+  border: 1px solid <%= @setting.color_input_border_focus %>;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px <%= @setting.color_input_shadow_focus %>;
 }
 #lower {
   background: #ecf2f5;
@@ -213,25 +215,25 @@ input[type=submit] {
   height: 30px;
   font-size: 13px;
   font-weight: bold;
-  color: #fff;
-  background-color: #AEEEB2; /*IE fallback*/
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#AEEEB2), to(#6DE970));
-  background-image: -moz-linear-gradient(top left 90deg, #AEEEB2 0%, #6DE970 100%);
-  background-image: linear-gradient(top left 90deg, #AEEEB2 0%, #6DE970 100%);
+  color: <%= @setting.color_input_submit %>;
+  background-color: <%= @setting.color_input_submit_background_top %>; /*IE fallback*/
+  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_top %>), to(<%= @setting.color_input_submit_background_bottom %>));
+  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_top %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
+  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_top %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
   border-radius: 30px;
   border: 1px solid #66add6;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
   cursor: pointer;
 }
 input[type=submit]:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#B9FFB6), to(#6DE970));
-  background-image: -moz-linear-gradient(top left 90deg, #B9FFB6 0%, #6DE970 100%);
-  background-image: linear-gradient(top left 90deg, #B9FFB6 0%, #6DE970 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_hover %>), to(<%= @setting.color_input_submit_background_bottom %>));
+  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_hover %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
+  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_hover %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
 }
 input[type=submit]:active {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#6DE970), to(#B9FFB6));
-  background-image: -moz-linear-gradient(top left 90deg, #6DE970 0%, #B9FFB6 100%);
-  background-image: linear-gradient(top left 90deg, #6DE970 0%, #B9FFB6 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_bottom %>), to(<%= @setting.color_input_submit_background_hover %>));
+  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_bottom %> 0%, <%= @setting.color_input_submit_background_hover %> 100%);
+  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_bottom %> 0%, <%= @setting.color_input_submit_background_hover %> 100%);
 }
 /** END FORM **/
 
@@ -293,7 +295,7 @@ p
 .maincenter .titleleft h1
 {
   font-size: 30px;
-  color: #31B404;
+  color: <%= @setting.color_title %>;
   float: left;
   width: 275px;
   position: relative;
@@ -329,7 +331,7 @@ p
 #maincontent
 {
   margin-top: 110px;
-  color: #AAA;
+  color: <%= @setting.color_main %>;
 }
 #maincontent .center
 {
@@ -339,7 +341,7 @@ p
 #maincontent > ul li h2 
 {
   font-size: 23px;
-  color: #888;
+  color: <%= @setting.color_main_h2 %>;
   line-height: 1.2;
   margin-bottom: 11px;
 }
@@ -372,7 +374,7 @@ p
 {
   font-style: italic;
   font-size: 20px;
-  color: #CCC;
+  color: <%= @setting.color_main_h3 %>;
   padding: 5px;
 }
 
@@ -388,7 +390,7 @@ p
 .notice{
   border-style: solid;
   border-color: #000000;
-  background-color: #D8F6CE;
+  background-color: <%= @setting.color_notice_background %>;
   width: 33%;
   margin: 0 auto;
   text-align: center;
@@ -399,7 +401,7 @@ p
 .alert{
   border-style: solid;
   border-color: #000000;
-  background-color: #F6CECE;
+  background-color: <%= @setting.color_alert_background %>;
   width: 33%;
   margin: 0 auto;
   text-align: center;
