@@ -13,3 +13,38 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//
+$(function (){
+
+$.urlParam = function(name){
+    var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+    return results[1] || 0;
+}
+
+	var currentItem = "";
+	$.getJSON("http://localhost:3000/getusers/show.json", 
+		function(data) {
+			$.each(data, function(key, val) {
+				if(val.id == $.urlParam('to'))
+					currentItem = '[{"id": ' + val.id + ', "name": "' + val.name + '"}]';
+		});
+		$('#message_to').tokenInput('/getusers/show.json', {
+		  	crossDomain: false,  
+		    prePopulate: $.parseJSON(currentItem), 
+		  	theme: 'facebook' 
+		  }); 
+	});
+ 
+ 
+// Funktion zum ausblenden der leeren Fehler-Divs
+
+	if(!$(".notice").text() == "")
+	{
+		 $(".notice").show();
+	}
+
+	if(!$(".alert").text() == "")
+	{
+		 $(".alert").show();
+	}
+});

@@ -1,20 +1,19 @@
 class WsdlController < ApplicationController
-  
+ authorize_resource :class => false
+ 
 	def connect 
     @setting = Setting.first
-
 		@client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		@output = ""
 	end
 
 	def get_all_for_new_saison
-  	if @client.nil?
-  		connect
-  	end
-
-		get_teams_by_league_saison
-		get_matchdata_by_league_saison
-	end
+    	if @client.nil?
+    		connect
+    	end
+  		get_teams_by_league_saison
+  		get_matchdata_by_league_saison
+    end 
 
 	def update_and_evaluate
   	if @client.nil?
@@ -36,7 +35,6 @@ class WsdlController < ApplicationController
         else
           @output += "Keine &Auml;nderung vorhanden!"
         end
-
       end
     end
 	end

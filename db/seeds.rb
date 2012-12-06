@@ -11,3 +11,5 @@
 	@setting.league_saison = "2012"
 	@setting.last_change = DateTime.now
 	@setting.save
+	Role.create name: 'admin'
+	Role.create name: 'user'
