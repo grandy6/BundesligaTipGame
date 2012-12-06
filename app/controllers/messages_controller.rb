@@ -25,7 +25,7 @@ end
   # GET /messages/new.json
   def new
     @message = Message.new
-
+    @message.to = params[:to]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -41,6 +41,7 @@ end
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.from = current_user.id
 
     respond_to do |format|
       if @message.save

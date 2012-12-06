@@ -15,7 +15,9 @@
     <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
     
     </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
-      <%= message.content %>
+      <%= message.content %><br><br>
+      <!-- Übergibt from_id an das neue To Feld -->
+      <%= link_to "Antworten", new_message_path(:to => message.from) %>
 </td>
 <% end %>
 </table>
@@ -29,7 +31,7 @@
           <!--  # Sucht nach der ID ! -->
               <td width="30%">An: <%= User.find(message.to).username %></td>
               <td>Betreff</td>
-            <!--  <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td> !--> 
+              <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
               </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
                 <%= message.content %>
           </td>

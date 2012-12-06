@@ -23,7 +23,7 @@ class WsdlController < ApplicationController
     end
     @response = @client.request :get_last_change_date_by_league_saison, body: { leagueShortcut: $liga_short, leagueSaison: $saison }
 
-    #holt das letze änderungsdatum. dieses kann man mit der letzen updatezeit (die man irgendwo speichert) verglichen werden
+    #Holt das letze änderungsdatum. dieses kann man mit der letzen updatezeit (die man irgendwo speichert) verglichen werden
     #wenn dieses datum neuer als das vorher gespeicherte, dann kann ein update geholt werden
     #somit spart man sich viel traffic
 
