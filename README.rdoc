@@ -1,6 +1,16 @@
 == To do!
-  Admin Rollen für die User müssen hinzugefügt werden, damit nur Admins z.B. nachher 
-  andere User löschen können oder (falls gebraucht) News posten können. (tk) 
+  * Für Nachrichten antworten, den Empfänger Key verschlüsseln
+  * Bannerbild mit in den Settings speichern
+  * Profilbild
+  * User eine Settings ID geben, so kann man das Layout anhand der Liga unterscheiden
+  * Nachrichten mit auf die Startseite packen
+  * Landingpage gestalten
+  * Tipps abgeben
+  * Punktevergabe
+  * Blog
+  * Statistiken (Tendenz der Tipps)
+  * Tabllen (Liga, Top Teams, Top Einzeltipper)
+  * Cron-Job
 
 
 
