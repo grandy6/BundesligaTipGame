@@ -1,0 +1,87 @@
+<div id="content_holder">
+	<% if !@matches.nil? %>
+		<%= form_tag "/tipp", method: "get" do %>
+			<div style="text-align:center; margin-bottom:15px;"><h2><%= @matches[0][:group_name] %></h2></div>
+			<table width="100%">
+				<% current_tipps = Tipp.where("user_id = ?", current_user.id) %>
+				<%= hidden_field_tag "group_id_for_save", @matches[0].group_order_id %>
+				<% @matches.each do |m| %>
+					<tr>
+						<td>
+							<%= m.name_team1 %>
+						</td>
+						<td>
+							<% 
+								current_tipp = current_tipps.find_by_match_id(m.id) 
+								current_tipp_team1 = "-"
+								current_tipp_team2 = "-"
+								if !current_tipp.nil?
+									current_tipp_team1 = current_tipp[:team1]
+									current_tipp_team2 = current_tipp[:team2]
+								end
+							%>
+							<% if DateTime.now > m.match_date_time - 15.minutes %>
+								<table class="table_tipps">
+									<tr>
+										<td class="match_result_left">
+											<%= label_tag current_tipp_team1 %>
+										</td>
+										<td class="match_result_center">
+											:
+										</td>
+										<td class="match_result_right">
+											<%= label_tag current_tipp_team2 %>
+										</td>
+									</tr>
+									<% if m.match_is_finished? %>
+										<tr class="match_result">
+											<td class="match_result_left">
+												<%= label_tag m.points_team1 %>
+											</td>
+											<td class="match_result_center">
+												:
+											</td>
+											<td class="match_result_right">
+												<%= label_tag m.points_team2 %>
+											</td>
+										</tr>
+									<% end %>
+								</table>
+							<% else %>
+								<table width="100%">
+									<tr>
+										<td class="match_result_left">
+											<%= number_field_tag m.match_number.to_s + "_" + m.id_team1.to_s, 
+																		current_tipp_team1, 
+																		min: 0, 
+																		style: "width:20px;" %>
+										</td>
+										<td class="match_result_center">
+											:
+										</td>
+										<td class="match_result_right">
+											<%= number_field_tag m.match_number.to_s + "_" + m.id_team2.to_s, 
+																		current_tipp_team2, 
+																		min: 0, 
+																		style: "width:20px;" %>
+										</td>
+									</tr>
+								</table>
+							<% end %>
+						</td>
+						<td>
+							<%= m.name_team2 %>
+						</td>
+					</tr>
+				<% end %>
+			</table>	
+			<%= submit_tag "Speichern" %>
+		<% end %>
+		<div>
+			Spieltag: <br />
+			<% Match.select(:group_order_id).uniq.each do |m| %>
+			  <%= link_to m.group_order_id, tipp_path(:g => Encode.new.encrypt(m.group_order_id.to_s)) %> | 
+			<% end %>
+		</div>
+<% end %>
+</div>

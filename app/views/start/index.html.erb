@@ -2,7 +2,7 @@
 <!-- http://www.iconfinder.com/search/?q=iconset%3Acc_mono_icon_set -->
 <ul class="content_fontcolor_link">
 	<li style="background-image: url(<%= asset_path 'icons/check.png' %>);">
-		<h2>Meine Tipps</h2>
+		<h2><%= link_to "Meine Tipps", tipp_path %></h2>
 		<p>Gebe hier deine Tipps für die n&auml;chsten Spiele ab!</p>
 	</li>
 	<li style="background-image: url(<%= asset_path 'icons/group.png' %>);">
@@ -20,6 +20,10 @@
 	<li style="background-image: url(<%= asset_path 'icons/profil.png' %>);">
 		<h2><%= link_to "Mein Profil", edit_user_registration_path %></h2>
 		<p>Bearbeite hier dein Profil!</p>
+	</li>
+	<li style="background-image: url(<%= asset_path 'icons/mail.png' %>);">
+		<h2><%= link_to "Nachrichten", messages_path %></h2>
+		<p>Kommuniziere mit deinen Freunden!</p>
 	</li>
 </ul>
 <br style="clear:both">

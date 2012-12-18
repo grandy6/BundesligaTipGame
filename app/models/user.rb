@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   belongs_to :team
+  has_many :tipps
   has_and_belongs_to_many :roles
   has_many :user_messages
   has_many :messages, through: :user_messages

@@ -1,10 +1,4 @@
 <% 	current_team_id = current_user.team_id %>
-<!-- 
-	User ist noch in keinem Team
-	User kann: 
-		- Teams suchen und Anfragen senden
-		- neues Team erstellen 
--->
 
 <div id="content_holder">
 	<% 
@@ -54,24 +48,16 @@
 		<% end %>
 	</div>
 
-
-	<!-- 	
-		User ist in einem Team
-		User kann:
-			- Team verlassen
-			- Teams suchen 
-	-->
 	<% else %>
 		<h3><%= current_user.team.name %></h3>
 		<!-- Alle Mitglieder dieses Teams -->
-		<% list_of_merbers = Team.find(current_team_id).users %>
-		<% list_of_merbers.each do |m| %>
+		<% Team.find(current_team_id).users.order("points DESC").each do |m| %>
 		<div class="row">
 			<div style="width:50%; float:left">
 				<%=	m.username %>
 			</div>
-			<div style="width:20%; float:right">
-				0 Pkt.
+			<div style="width:20%; float:right; text-align: right;">
+				<%= Tipp.where("user_id = ?", m.id).sum("points") %> Pkt.
 			</div>
 			<div style="clear:both"></div>
 		</div>

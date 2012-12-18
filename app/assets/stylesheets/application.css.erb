@@ -164,6 +164,7 @@ input {
   outline: none;
 }
 input[type=text],
+input[type=number],
 input[type=email],
 input[type=password] {
   color: <%= @setting.color_input %>;
@@ -179,13 +180,19 @@ input[type=password] {
   -moz-transition: all .4s ease;
   transition: all .4s ease;
 }
+input[type=number]
+{
+  margin: 10px;
+}
 input[type=text]:hover,
+input[type=number]:hover,
 input[type=email]:hover,
 input[type=password]:hover {
   border: 1px solid <%= @setting.color_input_border_hover %>;
   box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px <%= @setting.color_input_shadow_hover %>;
 }
 input[type=text]:focus,
+input[type=number]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
   border: 1px solid <%= @setting.color_input_border_focus %>;
@@ -409,3 +416,29 @@ p
   display: none;
   margin-bottom: 20px;
 }
+.table_tipps 
+{
+  width: 127px;
+  height: 49px;
+}
+.match_result 
+{
+  font-weight: bold;
+}
+.match_result_left
+{
+  width: 45%;
+  text-align: right;
+}
+.match_result_center
+{
+  width: 5%;
+}
+.match_result_right 
+{
+  width: 45%;
+  text-align: left;
+}
+
+
+

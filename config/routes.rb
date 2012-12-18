@@ -1,4 +1,5 @@
 BundesligaTipGame::Application.routes.draw do
+  
   resources :messages, :userhelper
 
   devise_for :users, :skip => [:sessions]
@@ -14,6 +15,7 @@ BundesligaTipGame::Application.routes.draw do
   get "wsdl/update_and_evaluate"
   get "wsdl/get_all_for_new_saison"
   get "wsdl/get_teams_by_league_saison"
+  get "wsdl/get_current_group"
 
   get "getusers/show"
   get "getusers/get"
@@ -26,9 +28,13 @@ BundesligaTipGame::Application.routes.draw do
  
   get "start/team"
   match "team" => "start#team"
-
   post "start/team"
   match "team" => "start#team"
+
+  get "start/tipp"
+  match "tipp" => "start#tipp"
+  post "start/tipp"
+  match "tipp" => "start#tipp"
 
   root :to => "home#index"
 

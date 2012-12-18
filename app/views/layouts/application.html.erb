@@ -20,7 +20,7 @@
 			<div class="maincenter">
 				
 				<div class="titleleft">
-					<h1>Tippspiel</h1>
+					<%= link_to "<h1>Tippspiel</h1>".html_safe, start_path %>
 				</div>
 
 				<div class="searchfield">
@@ -29,8 +29,8 @@
 
 				<div class="user_signin">
 					<% if user_signed_in? %>
-						Angemeldet als 
-						<%= link_to current_user.username, edit_user_registration_path, :method => :get %>.
+						Hallo 
+						<%= link_to current_user.username, edit_user_registration_path, :method => :get %>!
 						<%= link_to image_tag('icons/logout.png', :width => 12), destroy_user_session_path, :method => :delete %>
 					<% else %>
 						<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
