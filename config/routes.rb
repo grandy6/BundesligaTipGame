@@ -1,4 +1,6 @@
 BundesligaTipGame::Application.routes.draw do
+  resources :news
+
   resources :messages, :userhelper
 
   devise_for :users, :skip => [:sessions]

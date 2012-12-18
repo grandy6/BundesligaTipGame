@@ -1,0 +1,21 @@
+<h1><%= link_to 'Neuigkeiten', news_index_path %></h1>
+<%= link_to 'Neue News', new_news_path %>
+<br/>
+<br/> 
+<article>
+  <div class="news_actions">
+    <%= link_to 'Bearbeiten', edit_news_path(@news) %>
+    <%= link_to 'Löschen', @news, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <h2><%= link_to @news.title, @news %></h2>
+  <p class="news_categories">Autor:  Datum: <%= @news.created_at.strftime("%d.%m.%Y %H:%M") %>
+  </p>
+  <p class="news_content"><%= @news.content %></p>
+  <p class="news_categories">Kategorien: 
+    <% @CategoryString = "" %>
+    <% @news.category_ids.each do |n| %>
+      <% @CategoryString += Category.find(n).name + ", " %>
+    <% end %>
+    <%= @CategoryString[0..-3] %>
+  </p>
+</article>
