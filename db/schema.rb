@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206200404) do
+ActiveRecord::Schema.define(:version => 20121212093908) do
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20121206200404) do
     t.datetime "last_change"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.string   "color_body"
     t.string   "color_input"
     t.string   "color_input_border"
     t.string   "color_input_shadow"
@@ -133,8 +134,6 @@ ActiveRecord::Schema.define(:version => 20121206200404) do
     t.string   "lastname"
     t.date     "birthday"
     t.integer  "team_id"
-    t.string   "role"
-    t.integer  "role_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

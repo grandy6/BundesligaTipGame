@@ -1,10 +1,54 @@
-LANGING PAGE
-<br /><br /><br />
-<h1> Überschrift 1 </h1>
-<br />
-<h2> Überschrift 2 </h2>
-<br />
-<h3> Überschrift 3 </h3>
-<br />
-<a href="#">ein link</a>
-<br />
+<div></div>
+<div class="left">	
+	<p>
+		<img src="http://placehold.it/470x200"><br>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet. </p>
+</div>
+<div class="right">
+<div id="content_holder">
+	<h2>Sign up</h2>
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+
+	 	<div>
+	  		<%= f.label :email %><br />
+	  		<%= f.email_field :email %>
+	  	</div>
+
+		<div>
+			<%= f.label :username %><br />
+			<%= f.text_field :username %>
+		</div>
+
+		<div>
+			<%= f.label :firstname %><br />
+			<%= f.text_field :firstname %>
+		</div>
+
+		<div>
+			<%= f.label :lastname %><br />
+			<%= f.text_field :lastname %>
+		</div>
+		<div>	
+			<%= f.label :birthday %><br />
+	    	<%= f.date_select :birthday, :start_year=>1900 %>
+	    </div>
+		<div>
+	      	<%= f.label :password %><br />
+		  	<%= f.password_field :password %>
+		</div>
+	    <div>
+	  	  	<%= f.label :password_confirmation %><br />
+	  		<%= f.password_field :password_confirmation %>
+	    </div>
+
+	  <div>
+	  		<%= f.submit "Sign up" %>
+	  </div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+  </div>
+</div>
+<div class="clear"></div>

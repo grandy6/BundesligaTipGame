@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+		<div id="background">
 	<div id="pagebar">
 		<div id="user_signin">
 			<% if user_signed_in? %>
@@ -18,16 +19,15 @@
 			<% end %>
 		</div>
 	</div>
-	<div id="content">
-		<!-- START devise messageholder -->
-		<p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-		<!-- END devise messageholder -->
-		<h1>WICHTIG!!!!</h1>
-		<br>
-		<h1>DIES IST DIE LANDING PAGE</h1>
-		<br>
-		<%= yield %>
+
+		<div id="content">
+			<!-- START devise messageholder -->
+			<p class="notice"><%= notice %></p>
+		  <p class="alert"><%= alert %></p>
+			<!-- END devise messageholder -->
+
+			<%= yield %>
+		</div>
 	</div>
 </body>
 </html>
