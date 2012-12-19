@@ -10,7 +10,7 @@
   <h2><%= link_to @news.title, @news %></h2>
   <p class="news_categories">Autor:  Datum: <%= @news.created_at.strftime("%d.%m.%Y %H:%M") %>
   </p>
-  <p class="news_content"><%= @news.content %></p>
+  <p class="news_content"><%= raw(@news.content) %></p>
   <p class="news_categories">Kategorien: 
     <% @CategoryString = "" %>
     <% @news.category_ids.each do |n| %>

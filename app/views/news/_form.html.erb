@@ -2,28 +2,27 @@
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
-
       <ul>
-      <% @news.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @news.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
-    <%= f.label :title %><br />
+    <%= 'Titel: ' %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= 'Inhalt: ' %><br />
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
+    <%= 'Kategorien (Mehrfachauswahl möglich): ' %><br />
     <%= f.collection_select :category_ids, Category.all, :id, :name, {selected: @news.category_ids}, {multiple: true} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Speichern' %>
   </div>
 <% end %>
