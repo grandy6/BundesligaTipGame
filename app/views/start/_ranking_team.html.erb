@@ -1,0 +1,13 @@
+<h3>Die besten Teams</h3>
+<!-- Team-Ranking -->
+<% Team.find(:all, order: "points DESC", limit: 10).each do |t| %>
+	<div class="row">
+		<div style="width:50%; float:left">
+			<%=	t.name %>
+		</div>
+		<div style="width:20%; float:right; text-align: right;">
+			<%= t.points.to_i %> Pkt.
+		</div>
+		<div style="clear:both"></div>
+	</div>
+<% end %>

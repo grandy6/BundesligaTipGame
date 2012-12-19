@@ -112,7 +112,7 @@ class WsdlController < ApplicationController
         if data.to_s(:db) > @setting.last_change.to_s(:db)
           update_matchdata
 
-          @output += "&Auml;nderungen gespeichert!"
+          @output += "<br><br>&Auml;nderungen gespeichert!"
           @output += "<br><br>setting date: " + @setting.last_change.to_s(:db) + "<br>wsdl date: " + data.to_s(:db)
 
           @setting.last_change = data
@@ -161,6 +161,7 @@ class WsdlController < ApplicationController
 
     allTipps.each do |current_tipp|
       if !current_tipp.checked?
+      
         # richtiger Tipp
         if current_tipp.team1 == current_match.points_team1 && current_tipp.team2 == current_match.points_team2
           current_tipp.points = 3
@@ -173,16 +174,28 @@ class WsdlController < ApplicationController
         # richtiger Sieger (Auswärtssieg)
         elsif current_tipp.team1 - current_tipp.team2 < 0 && current_match.points_team1 - current_match.points_team2 < 0
           current_tipp.points = 1
+        # kompett flsch getippt
         else
           current_tipp.points = 0
         end
+
         current_tipp.checked = true
         current_tipp.save
+
+        # Beim User ebenfalls die Punkte hinzufügen (zwecks späterer Performance)
         current_user = User.find(current_tipp.user_id)
         current_user.points += current_tipp.points
+        current_user.save
 
-        @output += "<br>Matchnumber: " + current_match.id.to_s
-        @output += " - Points: " + current_tipp.points.to_s
+        # User Punkte durch die Anzahl der Team-User teilen und diese dem Team zuweisen - Druchschnittspunkte
+        current_team = current_user.team
+        current_team.points += current_tipp.points / current_team.users.size.to_f
+        current_team.save
+
+        # @output += "<br>Matchnumber: " + current_match.id.to_s
+        # @output += " - Points: " + current_tipp.points.to_s
+        # @output += " - Teamsize: " + current_team.users.size.to_s
+        # @output += " - Team-avg: " + (current_tipp.points / current_team.users.size.to_f).to_s
       end
     end
   end

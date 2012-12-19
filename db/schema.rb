@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218165857) do
+ActiveRecord::Schema.define(:version => 20121219113535) do
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
@@ -97,9 +97,10 @@ ActiveRecord::Schema.define(:version => 20121218165857) do
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.integer  "owner_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.boolean  "is_public"
+    t.float    "points",     :default => 0.0
   end
 
   create_table "tipps", :force => true do |t|

@@ -1,5 +1,5 @@
 BundesligaTipGame::Application.routes.draw do
-  
+
   resources :messages, :userhelper
 
   devise_for :users, :skip => [:sessions]
@@ -25,6 +25,9 @@ BundesligaTipGame::Application.routes.draw do
 
   get "start/index"
   match "start" => "start#index"
+
+  get "start/ranking"
+  match "ranking" => "start#ranking"
  
   get "start/team"
   match "team" => "start#team"

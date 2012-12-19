@@ -1,0 +1,13 @@
+<h3>Die besten Einzeltipper</h3>
+<!-- Team-Ranking -->
+<% User.find(:all, order: "points DESC", limit: 10) do |m| %>
+	<div class="row">
+		<div style="width:50%; float:left">
+			<%=	m.username %>
+		</div>
+		<div style="width:20%; float:right; text-align: right;">
+			<%= m.points %> Pkt.
+		</div>
+		<div style="clear:both"></div>
+	</div>
+<% end %>

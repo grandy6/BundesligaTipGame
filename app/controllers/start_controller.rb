@@ -110,4 +110,8 @@ class StartController < ApplicationController
       format.json { render json: @team }
   	end
 	end
+
+	def ranking 
+
+	end
 end
