@@ -1,4 +1,6 @@
 BundesligaTipGame::Application.routes.draw do
+  get "news/category"
+
   resources :news
 
   resources :messages, :userhelper
