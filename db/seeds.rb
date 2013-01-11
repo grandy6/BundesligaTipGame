@@ -32,3 +32,11 @@
 
 	Role.create name: 'admin'
 	Role.create name: 'user'
+
+	Category.create name: "1. Bundesliga 2012/2013"
+	Category.create name: "2. Bundesliga 2012/2013"
+	
+	Category.create name: "NFL 2012/2013"
+	Category.create name: "GFL 2013"
+	Category.create name: "GFL 2 2013"
+	

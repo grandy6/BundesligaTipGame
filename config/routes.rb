@@ -1,7 +1,5 @@
 BundesligaTipGame::Application.routes.draw do
 
-  get "start/statistik"
-
   resources :messages, :userhelper
 
   devise_for :users, :skip => [:sessions]

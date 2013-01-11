@@ -1,0 +1,21 @@
+// Place all the styles related to the news controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.news_actions {
+  float: right;
+}
+.news_categories {
+  font-size: 8pt;
+  opacity: 0.6;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+.news_content {
+  
+}
+h1{
+  font-size:20px;
+}
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+}

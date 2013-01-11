@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111113117) do
+ActiveRecord::Schema.define(:version => 20130111120203) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
@@ -22,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20130111113117) do
     t.integer  "group_order_id"
     t.string   "group_name"
     t.integer  "league_id"
-    t.string   "league_saison"
     t.string   "league_name"
+    t.string   "league_saison"
     t.string   "league_shortcut"
     t.string   "name_team1"
     t.string   "name_team2"
@@ -48,6 +54,24 @@ ActiveRecord::Schema.define(:version => 20130111113117) do
     t.datetime "updated_at", :null => false
     t.string   "title"
   end
+
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "news_categories", :force => true do |t|
+    t.integer  "news_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "news_categories", ["category_id"], :name => "index_news_categories_on_category_id"
+  add_index "news_categories", ["news_id"], :name => "index_news_categories_on_news_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,28 @@
+<h1>Neuigkeiten</h1>
+<% if can? :create, @news %>
+  <%= link_to 'Neue News', new_news_path %>
+<% end %>
+<br/>
+<br/> 
+<% @news.each do |news| %>
+  <article>
+    <div class="news_actions">
+      <% if can? :update, news %>
+        <%= link_to 'Bearbeiten', edit_news_path(news) %>
+      <% end %>
+      <% if can? :destroy, news %>
+        <%= link_to 'Löschen', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+    <h2><%= link_to news.title, news %></h2>
+    <p class="news_categories">Autor: <%= news.user.username %> Datum: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+    <p class="news_content"><%= raw(news.content) %></p>
+    <p class="news_categories">
+      <% @CategoryString = "" %>
+      <% news.category_ids.each do |n| %>
+         <% @CategoryString += Category.find(n).name + ", " %>
+      <% end %>
+      Kategorien: <%= @CategoryString[0..-3] %>
+    </p>
+  </article>
+<% end %>
