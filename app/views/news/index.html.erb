@@ -1,12 +1,18 @@
 <h1>Neuigkeiten</h1>
-<%= link_to 'Neue News', new_news_path %>
+<% if can? :create, @news %>
+  <%= link_to 'Neue News', new_news_path %>
+<% end %>
 <br/>
 <br/> 
 <% @news.each do |news| %>
   <article>
     <div class="news_actions">
-      <%= link_to 'Bearbeiten', edit_news_path(news) %>
-      <%= link_to 'Löschen', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if can? :update, news %>
+        <%= link_to 'Bearbeiten', edit_news_path(news) %>
+      <% end %>
+      <% if can? :destroy, news %>
+        <%= link_to 'Löschen', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
     <h2><%= link_to news.title, news %></h2>
     <p class="news_categories">Autor:  Datum: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %>

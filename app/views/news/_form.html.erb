@@ -1,4 +1,27 @@
-<%= form_for(@news) do |f| %>
+<%= javascript_include_tag "tiny_mce/tiny_mce.js" %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    tinyMCE.init({
+      // General options
+        mode : "textareas",
+        theme : "advanced",
+        plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+        // Theme options
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,forecolor,backcolor|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup",
+        theme_advanced_buttons2 : "tablecontrols,|,hr,removeformat,visualaid,|,charmap,emotions,iespell,media,|,print,|,fullscreen,|,del,ins",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true,
+        font_size_style_values : "xx-small,x-small,small,medium,large,x-large,xx-large",
+
+        // Skin options
+        skin : "o2k7",
+        skin_variant : "silver",
+    });
+  </script>
+  <%= form_for(@news) do |f| %>
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
