@@ -1,4 +1,5 @@
 BundesligaTipGame::Application.routes.draw do
+  resources :news
 
   resources :messages, :userhelper
 
