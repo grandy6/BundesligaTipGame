@@ -17,5 +17,6 @@ class User < ActiveRecord::Base
   def role?(role)
     self.roles.exists?(:name => role.to_s)
   end
+  has_many :news
 end
     

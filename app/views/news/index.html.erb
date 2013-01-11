@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <h2><%= link_to news.title, news %></h2>
-    <p class="news_categories">Autor:  Datum: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %>
+    <p class="news_categories">Autor: <%= news.user.username %> Datum: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %></p>
     <p class="news_content"><%= raw(news.content) %></p>
     <p class="news_categories">
       <% @CategoryString = "" %>
