@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219113535) do
+ActiveRecord::Schema.define(:version => 20130111113117) do
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(:version => 20121219113535) do
     t.integer  "points_team2"
     t.datetime "last_update"
     t.boolean  "match_is_finished"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.boolean  "evaluated",           :default => false
   end
 
   create_table "messages", :force => true do |t|
@@ -90,8 +91,15 @@ ActiveRecord::Schema.define(:version => 20121219113535) do
     t.integer  "team_number"
     t.string   "team_name"
     t.string   "team_icon_url"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "played_matches", :default => 0
+    t.integer  "win",            :default => 0
+    t.integer  "drawn",          :default => 0
+    t.integer  "lost",           :default => 0
+    t.integer  "goals_for",      :default => 0
+    t.integer  "goals_against",  :default => 0
+    t.integer  "points",         :default => 0
   end
 
   create_table "teams", :force => true do |t|

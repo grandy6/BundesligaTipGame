@@ -1,0 +1,80 @@
+<div id="content_holder_big">
+	<h3>Aktuelle Bundesligatabelle</h3>
+	<!-- Bundesligatabelle -->
+	<div class="row">
+		<div class="div_table_numbers">
+			Pl.
+		</div>
+		<div class="div_table_name">
+			Verein
+		</div>
+		<div class="div_table_numbers">&nbsp;</div>
+		<div class="div_table_numbers">
+			Sp.
+		</div>
+		<div class="div_table_numbers">&nbsp;</div>
+		<div class="div_table_numbers">
+			g.
+		</div>
+		<div class="div_table_numbers">
+			u.
+		</div>
+		<div class="div_table_numbers">
+			v.
+		</div>
+		<div class="div_table_numbers">&nbsp;</div>
+		<div class="div_table_numbers">
+			Tore
+		</div>
+		<div class="div_table_numbers">&nbsp;</div>
+		<div class="div_table_numbers">
+			Diff.
+		</div>
+		<div class="div_table_numbers">&nbsp;</div>
+		<div class="div_table_numbers">
+			Pkt.
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<% position = 0 %>
+	<% Soccerteam.select("*, (goals_for + goals_against) as diff").order("points DESC, diff DESC, goals_for DESC").each do |t| %>
+	<% #Soccerteam.(:all, order: "points DESC", limit: 10).each do |t| %>
+		<% position += 1 %>
+		<div class="row">
+			<div class="div_table_numbers">
+				<%=	position %>
+			</div>
+			<div class="div_table_name">
+				<img src="<%=	t.team_icon_url %>" />
+				<%=	t.team_name %>
+			</div>
+			<div class="div_table_numbers">&nbsp;</div>
+			<div class="div_table_numbers">
+				<%=	t.played_matches %>
+			</div>
+			<div class="div_table_numbers">&nbsp;</div>
+			<div class="div_table_numbers">
+				<%=	t.win %>
+			</div>
+			<div class="div_table_numbers">
+				<%=	t.drawn %>
+			</div>
+			<div class="div_table_numbers">
+				<%=	t.lost %>
+			</div>
+			<div class="div_table_numbers">&nbsp;</div>
+			<div class="div_table_numbers">
+				<%=	t.goals_for %>:<%= t.goals_against %>
+			</div>
+			<div class="div_table_numbers">&nbsp;</div>
+			<div class="div_table_numbers">
+				<%=	t.goals_for - t.goals_against %>
+			</div>
+			<div class="div_table_numbers">&nbsp;</div>
+			<div class="div_table_numbers">
+				<%= t.points.to_i %>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	<% end %>
+</div>
