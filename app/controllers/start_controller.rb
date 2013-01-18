@@ -114,4 +114,8 @@ class StartController < ApplicationController
 	def ranking 
 
 	end
+
+  def statistik
+
+  end
 end
