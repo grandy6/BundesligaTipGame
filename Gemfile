@@ -10,6 +10,9 @@ gem 'mysql2'
 #Login-Gem
 gem 'devise'
 
+#Adminkrams
+gem 'activeadmin'
+
 #Webservice
 gem 'savon'
 # avalible actions:
