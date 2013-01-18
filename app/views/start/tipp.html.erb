@@ -20,7 +20,7 @@
 									current_tipp_team2 = current_tipp[:team2]
 								end
 							%>
-							<% if DateTime.now > m.match_date_time - 15.minutes %>
+							<% if DateTime.now > DateTime.parse((m.match_date_time_utc - 15.minutes).to_s) %>
 								<table class="table_tipps">
 									<tr>
 										<td class="match_result_left">

@@ -1,5 +1,8 @@
+require "webservice"
+
 class StartController < ApplicationController
-    authorize_resource :class => false
+  authorize_resource :class => false
+
   def index
   end
 
@@ -12,11 +15,12 @@ class StartController < ApplicationController
   		if params.has_key?(:g)
   			group_id = Encode.new.decrypt(params[:g])
   		else
-		  	group_id = WsdlController.new.get_current_group
+		  	group_id = Webservice::Base.get_current_group(Setting.first) 
+        #group_id = WsdlController.new.get_current_group
 		  end
 
 		  # Alle Spiele eines Spieltages holen
-	  	@matches = Match.where("group_order_id = ?", group_id)
+	  	@matches = Match.where("group_order_id = ?", group_id).order("match_date_time ASC")
   	end
   end
 
