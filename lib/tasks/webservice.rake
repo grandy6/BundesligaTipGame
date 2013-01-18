@@ -1,5 +1,6 @@
-namespace :webservice do
 require "webservice"
+
+namespace :webservice do
 
 desc "Get all data for new saison"
 task :new => [:get_teams_by_league_saison, :get_matchdata_by_league_saison]
