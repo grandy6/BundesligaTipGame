@@ -1,4 +1,6 @@
 BundesligaTipGame::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   resources :messages, :userhelper
 
   resources :news
