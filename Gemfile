@@ -15,6 +15,7 @@ gem 'activeadmin'
 
 #Webservice
 gem 'savon'
+
 # avalible actions:
 # -------------------
 # :get_avail_leagues
@@ -48,7 +49,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', '0.10.2', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -65,7 +66,8 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capistrano-ext'
 
 # To use debugger
 # gem 'debugger'
