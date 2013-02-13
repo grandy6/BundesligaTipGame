@@ -5,14 +5,12 @@ class Ability
       if user.role? :admin
         # Admins
         can :manage, :all
-      else
+      else if user.role? :user
         # Registered users
-        can :read, :all
-      end
-      if user.role? :user
-        can :manage, Message
-      end
-    end
+        can :manage, :all
+       end
+     end
+   end
 end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
