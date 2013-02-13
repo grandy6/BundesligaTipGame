@@ -11,14 +11,27 @@
 	<div id="landingholder">
 		<div id="background">
 	<div id="pagebar">
-		<div id="user_signin">
+		<div>
 			<% if user_signed_in? %>
 				Angemeldet als 
 				<%= link_to current_user.username, edit_user_registration_path, :method => :get %>
 				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
 			<% else %>
-				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+				  <div class="login"><%= f.label :username %>
+			  		<%= f.text_field :username %></div>
+
+				  <div class="login"><%= f.label :password %>
+				  <%= f.password_field :password %></div>
+
+				  <div class="login"><%= f.submit "Sign in" %>
+
+				  </div>
+				  <%= link_to "Registrieren", new_user_registration_path %>
+				<% end %>
+				 <!-- <%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %> -->
 			<% end %>
+			<div class	="clear"></div>	
 		</div>
 	</div>
 
