@@ -14,7 +14,7 @@ gem 'devise'
 gem 'activeadmin'
 
 #Webservice
-gem 'savon'
+gem 'savon', '~> 1.0'
 
 # avalible actions:
 # -------------------
