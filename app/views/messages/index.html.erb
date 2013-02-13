@@ -11,9 +11,8 @@
   <tr>
 <!--  # Sucht nach der ID ! -->
     <td width="30%">Von: <%= User.find(message.from).username %></td>
-    <td>Betreff</td>
-    <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
-    
+    <td>Betreff: <%= message.title %></td>
+    <td width="20px"><%= link_to image_tag('icons/down.png'), '#tabs-1', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
     </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
       <%= message.content %><br><br>
       <!-- Übergibt from_id an das neue To Feld -->
@@ -30,7 +29,7 @@
             <tr>
           <!--  # Sucht nach der ID ! -->
               <td width="30%">An: <%= User.find(message.to).username %></td>
-              <td>Betreff</td>
+              <td>Betreff: <%= message.title %></td>
               <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
               </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
                 <%= message.content %>

@@ -2,32 +2,47 @@
 <html>
 <head>
   <title>BundesligaTipGame</title>
+  <%= stylesheet_link_tag    "home", :media => "all" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="landingholder">
+		<div id="background">
 	<div id="pagebar">
-		<div id="user_signin">
+		<div>
 			<% if user_signed_in? %>
 				Angemeldet als 
 				<%= link_to current_user.username, edit_user_registration_path, :method => :get %>
 				<%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
 			<% else %>
-				<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+				  <div class="login"><%= f.label :username %>
+			  		<%= f.text_field :username %></div>
+
+				  <div class="login"><%= f.label :password %>
+				  <%= f.password_field :password %></div>
+
+				  <div class="login"><%= f.submit "Sign in" %>
+				  </div>
+				  
+				<% end %>
 			<% end %>
+			<div class	="clear"></div>	
 		</div>
 	</div>
-	<div id="content">
-		<!-- START devise messageholder -->
-		<p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-		<!-- END devise messageholder -->
-		<h1>WICHTIG!!!!</h1>
-		<br>
-		<h1>DIES IST DIE LANDING PAGE</h1>
-		<br>
-		<%= yield %>
+
+		<div id="content">
+			<!-- START devise messageholder -->
+			<p class="notice"><%= notice %></p>
+		  <p class="alert"><%= alert %></p>
+			<!-- END devise messageholder -->
+
+			<%= yield %>
+		</div>
 	</div>
+</div>
+<!--<div class="footer"><p>Test 123</p></div> -->
 </body>
 </html>

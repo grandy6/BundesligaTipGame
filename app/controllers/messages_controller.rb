@@ -25,7 +25,12 @@ end
   # GET /messages/new.json
   def new
     @message = Message.new
-    @message.to = params[:to]
+    # if !params[:to].nil?
+    #   params[:to].each do |p|
+    #     #@message.to.push(User.find(p))
+    #     @message.users.push(User.find(p))
+    #   end
+    # end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -43,6 +48,10 @@ end
     @message = Message.new(params[:message])
     @message.from = current_user.id
 
+    m = params[:message]
+    @message.users = Array.new
+    m[:user_ids].to_s.split(',').each {|i| @message.users << User.find(i) }
+      
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }

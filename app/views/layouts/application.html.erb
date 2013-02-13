@@ -5,6 +5,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script>
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
+  </script>
 </head> 
 </head>
 <body>
@@ -22,8 +28,11 @@
 
 				<div class="user_signin">
 					<% if user_signed_in? %>
-						Hallo 
-						<%= link_to current_user.username, edit_user_registration_path, :method => :get %>!
+						Angemeldet als 
+						<%= link_to current_user.username, edit_user_registration_path, :method => :get %>.
+						<div id="ajaxNotifications">
+							Ungelesene Nachrichten
+						</div>
 						<%= link_to image_tag('icons/logout.png', :width => 12), destroy_user_session_path, :method => :delete %>
 					<% else %>
 						<%= link_to "Registrieren", new_user_registration_path %> oder <%= link_to "anmelden", new_user_session_path %>

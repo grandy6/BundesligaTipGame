@@ -15,7 +15,6 @@
 //= require_tree .
 //
 $(function (){
-
 	$.urlParam = function(name){
 	    var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
 	    if(results == null)
@@ -24,6 +23,7 @@ $(function (){
 	    	return results[1] || 0;
 	}
 
+
 	var currentItem = "";
 	$.getJSON("http://localhost:3000/getusers/show.json", 
 		function(data) {
@@ -31,7 +31,7 @@ $(function (){
 				if(val.id == $.urlParam('to'))
 					currentItem = '[{"id": ' + val.id + ', "name": "' + val.name + '"}]';
 		});
-		$('#message_to').tokenInput('/getusers/show.json', {
+		$('#message_user_ids').tokenInput('/getusers/show.json', {
 		  	crossDomain: false,  
 		    prePopulate: $.parseJSON(currentItem), 
 		  	theme: 'facebook' 
