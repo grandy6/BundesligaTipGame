@@ -24,20 +24,26 @@
 	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(235,235,235,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ebebeb',GradientType=0 ); /* IE6-9 */
 	height: 50px;
-  	margin-bottom: 20px;
-  	
-
-
+  	margin-bottom: 20px;  	
 }
 #pagebar > div > form {
 	margin-top: 0px;
 	height: 50px;
+	float: right;
 }
 
 #pagebar > div > form > * {
 	height: 50px;
 	display:table-cell;
      vertical-align:middle;
+}
+#pagebar > div > form  input[type=text], 
+#pagebar > div > form  input[type=password] {
+	width: 150px;
+	left: 0px;
+}
+#pagebar > div > form  input[type=submit]{
+	left:0px;
 }
 #content > *
 {
@@ -87,4 +93,7 @@ html, body {
 .login * {
 	
      display: inline-block;
+}
+.menuright{
+	float: right;
 }
