@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20130111161955) do
     t.integer  "group_order_id"
     t.string   "group_name"
     t.integer  "league_id"
-    t.string   "league_name"
     t.string   "league_saison"
+    t.string   "league_name"
     t.string   "league_shortcut"
     t.string   "name_team1"
     t.string   "name_team2"
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(:version => 20130111161955) do
   create_table "tipps", :force => true do |t|
     t.integer  "team1"
     t.integer  "team2"
-    t.integer  "points"
+    t.integer  "points",     :default => -1
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
@@ -192,9 +192,7 @@ ActiveRecord::Schema.define(:version => 20130111161955) do
     t.string   "firstname"
     t.string   "lastname"
     t.date     "birthday"
-    t.string   "role"
     t.integer  "team_id"
-    t.integer  "role_id"
     t.integer  "points",                 :default => 0
   end
 
