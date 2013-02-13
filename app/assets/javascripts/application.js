@@ -30,7 +30,7 @@ else
 				if(val.id == $.urlParam('to'))
 					currentItem = '[{"id": ' + val.id + ', "name": "' + val.name + '"}]';
 		});
-		$('#message_to').tokenInput('/getusers/show.json', {
+		$('#message_user_ids').tokenInput('/getusers/show.json', {
 		  	crossDomain: false,  
 		    prePopulate: $.parseJSON(currentItem), 
 		  	theme: 'facebook' 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212093908) do
+ActiveRecord::Schema.define(:version => 20130126123110) do
 
   create_table "matches", :force => true do |t|
     t.integer  "match_number"

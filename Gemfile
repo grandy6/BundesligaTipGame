@@ -66,4 +66,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+#Paperclip (Avatare etc.)
+#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+# Rollenmanagement und Autorisierung
 gem 'cancan'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

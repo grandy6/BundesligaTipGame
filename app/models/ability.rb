@@ -4,6 +4,8 @@ class Ability
     user ||= User.new # guest user
         if user.role? :admin
           can :manage, :all
+        else 
+          can :read, :all
         end
         if user.role? :user
           can :manage, Message
