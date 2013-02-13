@@ -13,7 +13,7 @@ class StartController < ApplicationController
   	else
   		# Spieltag herausfinden, entweder als Paramter übergeben, oder vom WebService holen
   		if params.has_key?(:g)
-  			group_id = Encode.new.decrypt(params[:g])
+  			group_id = params[:g]
   		else
 		  	group_id = Webservice::Base.get_current_group(Setting.first) 
         #group_id = WsdlController.new.get_current_group
@@ -52,7 +52,7 @@ class StartController < ApplicationController
 	  	end
   	end
   	
-  	redirect_to tipp_path(:g => Encode.new.encrypt(params[:group_id_for_save]))
+  	redirect_to tipp_path(:g => params[:group_id_for_save])
 	end
 
   def team
