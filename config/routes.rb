@@ -1,9 +1,20 @@
 BundesligaTipGame::Application.routes.draw do
+  root :to => "home#index"
+
   ActiveAdmin.routes(self)
 
   resources :messages, :userhelper
-
+  
   resources :news
+
+  resources :teams do
+    get "join", :on => :collection
+    get "exit", :on => :collection
+  end
+
+  resources :rankings
+
+  resources :statistiks
 
   devise_for :users, :skip => [:sessions]
   as :user do
@@ -23,30 +34,18 @@ BundesligaTipGame::Application.routes.draw do
   get "getusers/show"
   get "getusers/get"
 
-  get "home/index"
-  match "home" => "home#index"
+  # get "home/index"
+  # match "home" => "home#index"
 
   get "start/index"
   match "start" => "start#index"
-
-  get "start/ranking"
-  match "ranking" => "start#ranking"
-
-  get "start/statistik"
-  match "statistik" => "start#statistik"
- 
-  get "start/team"
-  match "team" => "start#team"
-  post "start/team"
-  match "team" => "start#team"
 
   get "start/tipp"
   match "tipp" => "start#tipp"
   post "start/tipp"
   match "tipp" => "start#tipp"
 
-  root :to => "home#index"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

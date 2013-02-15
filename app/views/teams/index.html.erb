@@ -1,0 +1,82 @@
+<div id="content_holder">
+  <p>Du geh&ouml;rst momentan keinem Team an. Gr&uuml;nde ein neues Team oder trete einem vorhanden Team bei.</p><br />
+
+  <div id="form_holder">
+    <h2>Team gr&uuml;nden:</h2>
+
+    <%= form_for(@team) do |f| %>
+      <% if @team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+          <ul>
+          <% @team.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name %></div>
+
+      <div><%= f.check_box :is_public %> &ouml;ffentliches Team</div>
+
+      <div><%= f.submit "Gr&uuml;nden".html_safe %></div>
+    <% end %>
+
+    <% 
+      allPublicTeam = Team.where("is_public = 1") 
+      if allPublicTeam.size > 0
+    %>
+      <h2>&Ouml;ffentlicher Gruppe beitreten:</h2>
+      <% allPublicTeam.each do |t| %>
+        <div class="row">
+        <div style="width:65%; float:left;">
+          <strong>Teamname</strong>
+        </div>
+        <div style="width:20%; float:left;">
+          <strong>Mitglieder</strong>
+        </div>
+        <div style="clear:both"></div>
+
+        <div style="width:65%; float:left;">
+          <%= t.name %>
+        </div>
+        <div style="width:20%; float:left; text-align: center;">
+          <%= t.users.size %>
+        </div>
+        <div>
+          <%= link_to "beitreten", controller: "teams", action: "join", id: t.id %>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- 
+
+<h1>Listing teams</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= link_to 'Show', team %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team', new_team_path %>
+ -->
