@@ -14,7 +14,24 @@
 
 /** START BROWSER REST **/
 
-<% @setting = Setting.first %>
+$color_body: #555555;
+$color_input: #777777;
+$color_input_border: #c7d0d2;
+$color_input_shadow: #f5f7f8;
+$color_input_border_hover: #b6bfc0;
+$color_input_shadow_hover: #f5f7f8;
+$color_input_border_focus: #A8E4AD;
+$color_input_shadow_focus: #E7FBEA;
+$color_input_submit: #ffffff;
+$color_input_submit_background_top: #AEEEB2;
+$color_input_submit_background_bottom: #6DE970;
+$color_input_submit_background_hover: #B9FFB6;
+$color_title: #31B404;
+$color_main: #AAAAAA;
+$color_main_h2: #888888;
+$color_main_h3: #CCCCCC;
+$color_notice_background: #D8F6CE;
+$color_alert_background: #F6CECE;
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
 {
@@ -22,7 +39,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   padding:0;
   border:0;
   font-size:100%;
-  color: <%= @setting.color_body %>;
+  color: $color_body;
   font:inherit;
   vertical-align:baseline;
   outline:none;
@@ -193,15 +210,15 @@ input[type=text],
 input[type=number],
 input[type=email],
 input[type=password] {
-  color: <%= @setting.color_input %>;
+  color: $color_input;
   padding-left: 10px;
   margin: 10px 10px 10px 0;
   margin-top: 12px;
   width: 350px;
   height: 25px;
-  border: 1px solid <%= @setting.color_input_border %>;
+  border: 1px solid $color_input_border;
   border-radius: 2px;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px <%= @setting.color_input_shadow %>;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px $color_input_shadow;
   -webkit-transition: all .4s ease;
   -moz-transition: all .4s ease;
   transition: all .4s ease;
@@ -214,15 +231,15 @@ input[type=text]:hover,
 input[type=number]:hover,
 input[type=email]:hover,
 input[type=password]:hover {
-  border: 1px solid <%= @setting.color_input_border_hover %>;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px <%= @setting.color_input_shadow_hover %>;
+  border: 1px solid $color_input_border_hover;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px $color_input_shadow_hover;
 }
 input[type=text]:focus,
 input[type=number]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  border: 1px solid <%= @setting.color_input_border_focus %>;
-  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px <%= @setting.color_input_shadow_focus %>;
+  border: 1px solid $color_input_border_focus;
+  box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px $color_input_shadow_focus;
 }
 #lower {
   background: #ecf2f5;
@@ -248,25 +265,25 @@ input[type=submit] {
   height: 30px;
   font-size: 13px;
   font-weight: bold;
-  color: <%= @setting.color_input_submit %>;
-  background-color: <%= @setting.color_input_submit_background_top %>; /*IE fallback*/
-  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_top %>), to(<%= @setting.color_input_submit_background_bottom %>));
-  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_top %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
-  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_top %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
+  color: $color_input_submit;
+  background-color: $color_input_submit_background_top; /*IE fallback*/
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color_input_submit_background_top), to($color_input_submit_background_bottom));
+  background-image: -moz-linear-gradient(top left 90deg, $color_input_submit_background_top 0%, $color_input_submit_background_bottom 100%);
+  background-image: linear-gradient(top left 90deg, $color_input_submit_background_top 0%, $color_input_submit_background_bottom 100%);
   border-radius: 30px;
   border: 1px solid #66add6;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
   cursor: pointer;
 }
 input[type=submit]:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_hover %>), to(<%= @setting.color_input_submit_background_bottom %>));
-  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_hover %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
-  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_hover %> 0%, <%= @setting.color_input_submit_background_bottom %> 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color_input_submit_background_hover), to($color_input_submit_background_bottom));
+  background-image: -moz-linear-gradient(top left 90deg, $color_input_submit_background_hover 0%, $color_input_submit_background_bottom 100%);
+  background-image: linear-gradient(top left 90deg, $color_input_submit_background_hover 0%, $color_input_submit_background_bottom 100%);
 }
 input[type=submit]:active {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(<%= @setting.color_input_submit_background_bottom %>), to(<%= @setting.color_input_submit_background_hover %>));
-  background-image: -moz-linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_bottom %> 0%, <%= @setting.color_input_submit_background_hover %> 100%);
-  background-image: linear-gradient(top left 90deg, <%= @setting.color_input_submit_background_bottom %> 0%, <%= @setting.color_input_submit_background_hover %> 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color_input_submit_background_bottom), to($color_input_submit_background_hover));
+  background-image: -moz-linear-gradient(top left 90deg, $color_input_submit_background_bottom 0%, $color_input_submit_background_hover 100%);
+  background-image: linear-gradient(top left 90deg, $color_input_submit_background_bottom 0%, $color_input_submit_background_hover 100%);
 }
 /** END FORM **/
 
@@ -304,7 +321,7 @@ p
 
 .header 
 {
-  background-image: url(<%= asset_path 'header-gradiant1.png' %>);
+  background-image: url(<%= asset_path 'header-gradiant1.png');
   background-repeat: repeat-x;
   background-position: top left;
   background-color: #dedede;
@@ -315,7 +332,7 @@ p
   border-top-width: 8px;
   border-top-style: solid;
   border-color: #BBB;
-  background: transparent url(<%= asset_path 'header-gradiant2.png' %>) no-repeat top right;
+  background: transparent url(<%= asset_path 'header-gradiant2.png') no-repeat top right;
   height: 380px;
 }
 
@@ -328,7 +345,7 @@ p
 .maincenter .titleleft h1
 {
   font-size: 30px;
-  color: <%= @setting.color_title %>;
+  color: $color_title;
   float: left;
   width: 275px;
   position: relative;
@@ -355,7 +372,7 @@ p
 #holder 
 {
   padding-bottom: 22px;
-  background: transparent url(<%= asset_path 'holder-shadow.png' %>) no-repeat;
+  background: transparent url(<%= asset_path 'holder-shadow.png') no-repeat;
   background-position: center 325px;
   top: 80px;
   position: absolute;
@@ -364,7 +381,7 @@ p
 #maincontent
 {
   margin-top: 110px;
-  color: <%= @setting.color_main %>;
+  color: $color_main;
 }
 #maincontent .center
 {
@@ -374,7 +391,7 @@ p
 #maincontent > ul li h2 
 {
   font-size: 23px;
-  color: <%= @setting.color_main_h2 %>;
+  color: $color_main_h2;
   line-height: 1.2;
   margin-bottom: 11px;
 }
@@ -407,7 +424,7 @@ p
 {
   font-style: italic;
   font-size: 20px;
-  color: <%= @setting.color_main_h3 %>;
+  color: $color_main_h3;
   padding: 5px;
 }
 
@@ -423,7 +440,7 @@ p
 .notice{
   border-style: solid;
   border-color: #000000;
-  background-color: <%= @setting.color_notice_background %>;
+  background-color: $color_notice_background;
   width: 33%;
   margin: 0 auto;
   text-align: center;
@@ -434,7 +451,7 @@ p
 .alert{
   border-style: solid;
   border-color: #000000;
-  background-color: <%= @setting.color_alert_background %>;
+  background-color: $color_alert_background;
   width: 33%;
   margin: 0 auto;
   text-align: center;
