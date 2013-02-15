@@ -63,3 +63,4 @@ module BundesligaTipGame
     config.assets.version = '1.0'
   end
 end
+
