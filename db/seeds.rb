@@ -40,3 +40,10 @@
 	Category.create name: "GFL 2013"
 	Category.create name: "GFL 2 2013"
 	
+	User.create :firstname => 'Max', 
+							:lastname => 'Mustermann', 
+							:username => 'admin', 
+							:email => 'admin@example.com', 
+							:password => 'password', 
+							:password_confirmation => 'password', 
+							:role => '1'	# Role 1 = admin
