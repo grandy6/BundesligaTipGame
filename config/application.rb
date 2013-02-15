@@ -59,9 +59,6 @@ module BundesligaTipGame
     # Skipping "Can't connect to MySQL Server on '127.0.0.1'" Error ^tp
     config.assets.initialize_on_precompile = false
 
-    # Skipping "Precompile errors" ^tp
-    config.assets.precompile += %w( *.css *.js )
-
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
