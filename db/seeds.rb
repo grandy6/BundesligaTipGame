@@ -47,4 +47,3 @@
 							:password => 'password', 
 							:password_confirmation => 'password', 
 							:role => '1'	# Role 1 = admin
-
