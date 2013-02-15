@@ -30,7 +30,7 @@
 									color_alert_background: "#F6CECE"
 
 
-	Role.create name: 'admin'
+	@role = Role.create name: 'admin'
 	Role.create name: 'user'
 
 	Category.create name: "1. Bundesliga 2012/2013"
@@ -46,4 +46,4 @@
 							:email => 'admin@example.com', 
 							:password => 'password', 
 							:password_confirmation => 'password', 
-							:role => '1'	# Role 1 = admin
+							:role => @role	# Role 1 = admin
