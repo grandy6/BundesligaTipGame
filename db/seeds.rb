@@ -9,7 +9,7 @@
 	Setting.create league_id: 456, 
 									league_short: "bl1", 
 									league_saison: "2012", 
-									last_change: DateTime.now, 
+									last_change: DateTime.now - 1.month, 
 									color_body: "#555555", 
 									color_input: "#777777", 
 									color_input_border: "#c7d0d2", 
