@@ -15,7 +15,7 @@ class StartController < ApplicationController
   		if params.has_key?(:g)
   			group_id = params[:g]
   		else
-		  	group_id = Webservice::Base.get_current_group(Setting.first) 
+		  	group_id = Webservice::Base.get_current_group_order_id(Setting.first.league_id)
         #group_id = WsdlController.new.get_current_group
 		  end
 
