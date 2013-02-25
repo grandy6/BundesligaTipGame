@@ -1,11 +1,8 @@
 == To do!
-* Für Nachrichten antworten, den Empfänger Key verschlüsseln
 * Bannerbild mit in den Settings speichern
 * Profilbild
-* User eine Settings ID geben, so kann man das Layout anhand der Liga unterscheiden
-* Landingpage gestalten
 * Cron-Job
-* TinyMCE nur auf der News create/edit Seite einbinden, JS Fehler aus der Developer-Console entfernen
+* Seeds erstellen (einige User, die in Teams sind und Tipps abgegeben haben)
 * TEST SCHREIBEN
 
 == Projekt neu einrichten
