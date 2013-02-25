@@ -8,7 +8,7 @@ module Webservice
       if response.success?
         data = response.to_array(:get_current_group_response, :get_current_group_result)
         if data
-          return data[0][:group_name]
+          return data[0][:group_order_id]
         end
       end
     end
