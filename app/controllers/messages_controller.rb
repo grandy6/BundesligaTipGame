@@ -2,19 +2,17 @@ class MessagesController < ApplicationController
   load_and_authorize_resource :only => [:index, :show]
   # GET /messages
   # GET /messages.json
-  def index      
-    else
+  def index
     @messages = Message.where(to: current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
     end
-end 
+  end 
   # GET /messages/1
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @message }
