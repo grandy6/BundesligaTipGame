@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111161955) do
-
-  create_table "_user_messages", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "message_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "_user_messages", ["message_id"], :name => "index_user_messages_on_message_id"
-  add_index "_user_messages", ["user_id"], :name => "index_user_messages_on_user_id"
+ActiveRecord::Schema.define(:version => 20130225120056) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -98,6 +88,18 @@ ActiveRecord::Schema.define(:version => 20130111161955) do
   add_index "news_categories", ["category_id"], :name => "index_news_categories_on_category_id"
   add_index "news_categories", ["news_id"], :name => "index_news_categories_on_news_id"
 
+  create_table "quotes", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rankings", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -149,6 +151,11 @@ ActiveRecord::Schema.define(:version => 20130111161955) do
     t.integer  "goals_for",      :default => 0
     t.integer  "goals_against",  :default => 0
     t.integer  "points",         :default => 0
+  end
+
+  create_table "statistiks", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teams", :force => true do |t|
