@@ -30,7 +30,7 @@
 									color_alert_background: "#F6CECE"
 
 
-	@role = Role.create name: 'admin'
+	admin_role = Role.create name: 'admin'
 	Role.create name: 'user'
 
 	Category.create name: "1. Bundesliga 2012/2013"
@@ -40,10 +40,12 @@
 	Category.create name: "GFL 2013"
 	Category.create name: "GFL 2 2013"
 	
-	User.create :firstname => 'Max', 
+	admin = User.create :firstname => 'Max', 
 							:lastname => 'Mustermann', 
 							:username => 'admin', 
 							:email => 'admin@example.com', 
 							:password => 'password', 
-							:password_confirmation => 'password', 
-							:role => @role	# Role 1 = admin
+							:password_confirmation => 'password'
+
+	admin.roles[0] = admin_role
+	admin.save
