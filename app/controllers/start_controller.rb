@@ -54,8 +54,4 @@ class StartController < ApplicationController
   	
   	redirect_to tipp_path(:g => params[:group_id_for_save])
 	end
-
-  def statistik
-
-  end
 end

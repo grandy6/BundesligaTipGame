@@ -15,11 +15,7 @@
 
     <div><%= f.label :lastname %><br />
     <%= f.text_field :lastname %></div>
-    <div>
-        <%= form_for @user, :url => users_path, :key => "value", html => { :multipart => true } do |form| %>
-        <%= form.file_field :avatar %>
-    <% end %>
-    </div>
+    <!-- PAPERCLIP -->
     <div>
       <p> 
         <%= f.label :birthday %><br />

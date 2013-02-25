@@ -24,16 +24,20 @@ $(function (){
 	}
 
 
-	var currentItem = "";
+	var currentItem = null;
 	$.getJSON("http://localhost:3000/getusers/show.json", 
 		function(data) {
 			$.each(data, function(key, val) {
 				if(val.id == $.urlParam('to'))
 					currentItem = '[{"id": ' + val.id + ', "name": "' + val.name + '"}]';
-		});
-		$('#message_user_ids').tokenInput('/getusers/show.json', {
+			});
+			
+			if(currentItem != null)
+				currentItem = $.parseJSON(currentItem);
+
+			$('#message_user_ids').tokenInput('/getusers/show.json', {
 		  	crossDomain: false,  
-		    prePopulate: $.parseJSON(currentItem), 
+		    prePopulate: currentItem, 
 		  	theme: 'facebook' 
 		  }); 
 	});

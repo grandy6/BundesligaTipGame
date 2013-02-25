@@ -37,7 +37,7 @@
 		<div style="clear:both"></div>
 	</div>
 	<% position = 0 %>
-	<% Soccerteam.select("*, (goals_for + goals_against) as diff").order("points DESC, diff DESC, goals_for DESC").each do |t| %>
+	<% Soccerteam.select("*, (goals_for + goals_against) as diff").order("points DESC, diff ASC, goals_for ASC").each do |t| %>
 	<% #Soccerteam.(:all, order: "points DESC", limit: 10).each do |t| %>
 		<% position += 1 %>
 		<div class="row">

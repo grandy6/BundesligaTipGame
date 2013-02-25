@@ -1,0 +1,17 @@
+<%= form_for(@tipp) do |f| %>
+  <% if @tipp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipp.errors.count, "error") %> prohibited this tipp from being saved:</h2>
+
+      <ul>
+      <% @tipp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
