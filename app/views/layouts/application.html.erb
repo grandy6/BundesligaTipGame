@@ -58,7 +58,13 @@
 		<%= yield %>
 
 		<div class="contentlineholder">
-			<h3>irgendwas sinnloses ;)</h3>
+			<h3>
+				<% 
+					offset = rand(Quote.count)
+					record = Quote.first(offset: offset)
+				%>
+				<%= record.title.html_safe %> - <span><%= record.author.html_safe %></span>
+			</h3>
 		</div>
 		
 	</div>
