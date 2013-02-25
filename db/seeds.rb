@@ -49,3 +49,4 @@
 
 	admin.roles[0] = Role.find_by_name("admin")
 	admin.save
+	
