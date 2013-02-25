@@ -47,5 +47,5 @@
 							:password => 'password', 
 							:password_confirmation => 'password'
 
-	admin.roles[0] = admin_role
+	admin.roles << admin_role
 	admin.save
