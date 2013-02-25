@@ -47,5 +47,5 @@
 							:password => 'password', 
 							:password_confirmation => 'password'
 
-	admin.roles << admin_role
+	admin.roles[0] = Role.find_by_name("admin")
 	admin.save
