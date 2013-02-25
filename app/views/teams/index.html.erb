@@ -26,7 +26,7 @@
     <% end %>
 
     <% 
-      allPublicTeam = Team.where("is_public = 1") 
+      allPublicTeam = Team.where("is_public = true") 
       if allPublicTeam.size > 0
     %>
       <h2>&Ouml;ffentlicher Gruppe beitreten:</h2>
