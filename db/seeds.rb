@@ -30,7 +30,7 @@
 									color_notice_background: "#D8F6CE",
 									color_alert_background: "#F6CECE"
 
-	Role.create name: 'admin'
+	admin_role = Role.create name: 'admin'
 	Role.create name: 'user'
 
 	Category.create name: "1. Bundesliga 2012/2013"
@@ -47,7 +47,7 @@
 							:password => 'password', 
 							:password_confirmation => 'password'
 
-	admin.roles[0] = Role.find_by_name("admin")
+	admin.roles << Role.first
 	admin.save
 
 	Quote.create title: 'Alles andere als die Nicht-Meisterschaft wäre ja eine Katastrophe gewesen.', author: 'Thomas Strunz'
