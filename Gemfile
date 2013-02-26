@@ -11,8 +11,8 @@ gem 'mysql2'
 gem 'devise'
 
 #Adminkrams
-# gem 'activeadmin'
-gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
+gem 'activeadmin'
+#gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
 
 #Webservice
 gem 'savon', '~> 1.0'
