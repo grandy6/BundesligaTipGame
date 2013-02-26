@@ -1,24 +1,18 @@
 == To do!
-* Bannerbild mit in den Settings speichern
-* Profilbild
 * Cron-Job
 * Seeds erstellen (einige User, die in Teams sind und Tipps abgegeben haben)
 * TEST SCHREIBEN
-
 == Projekt neu einrichten
-
-  rake db:create, migration, seed
-
-  Spieldaten holen und auswertern
-  rake webservice:new
-  und
-  rake webservice:update
-
+Als DB wird mysql verwendet.
+rake db:create, migration, seed
+Spieldaten holen und auswertern
+rake webservice:new
+und
+rake webservice:update
 SQL-Code wenn man die DB resetten will/muss, um die Daten neu vom Webservice zu holen
-
-  UPDATE tipps SET checked = 0;
-  UPDATE users SET points = 0;
-  UPDATE teams SET points = 0;
-  UPDATE settings SET last_change = "2013-01-01 00:00:00";
-  TRUNCATE matches;
-  TRUNCATE soccerteams;
+UPDATE tipps SET checked = 0;
+UPDATE users SET points = 0;
+UPDATE teams SET points = 0;
+UPDATE settings SET last_change = "2013-01-01 00:00:00";
+TRUNCATE matches;
+TRUNCATE soccerteams;
