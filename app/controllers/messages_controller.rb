@@ -3,7 +3,15 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where(to: current_user.id)
+    to = current_user.user_messages.select(:message_id)
+    to_array = Array.new
+    to.each do |u|
+      to_array << u.message_id
+    end
+    @inbox = Message.where(id: to_array)
+    @outbox = Message.where(from: current_user.id)
+    #@messages = Message.where(to: current_user.id)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @messages }
