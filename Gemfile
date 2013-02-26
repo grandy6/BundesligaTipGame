@@ -12,7 +12,6 @@ gem 'devise'
 
 #Adminkrams
 gem 'activeadmin'
-# gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs' # https://github.com/gregbell/active_admin/issues/1939#issuecomment-14096414
 
 #Webservice
 gem 'savon', '~> 1.0'
