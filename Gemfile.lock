@@ -215,6 +215,7 @@ DEPENDENCIES
   capistrano
   capistrano-ext
   coffee-rails (~> 3.2.1)
+  coffee-script-source (~> 1.4.0)
   devise
   jquery-rails
   mysql2

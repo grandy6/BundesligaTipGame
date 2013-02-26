@@ -47,6 +47,7 @@ gem 'savon', '~> 1.0'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
   gem 'therubyracer', '0.10.2', :platform => :ruby
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
