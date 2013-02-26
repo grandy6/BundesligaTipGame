@@ -21,4 +21,5 @@ SQL-Code wenn man die DB resetten will/muss, um die Daten neu vom Webservice zu 
   UPDATE settings SET last_change = "2013-01-01 00:00:00";
   TRUNCATE matches;
   TRUNCATE soccerteams;
+
   
