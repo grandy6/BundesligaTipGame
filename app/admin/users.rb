@@ -5,8 +5,16 @@ ActiveAdmin.register User do
     column :firstname
     column :lastname
     column :email
-    column :created_at
-    column :updated_at
     default_actions
   end
+
+  form do |f|
+    f.inputs "User Details" do
+        f.input :username
+        f.input :email
+        f.input :roles, :as => :check_boxes
+    end
+  f.buttons
+  end
+  
 end

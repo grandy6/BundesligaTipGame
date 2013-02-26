@@ -6,11 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :firstname, :lastname, :birthday, :roles
-
-  #Paperclip Konfiguration
- # has_attached_file :avatar, :styles => { :small  => "100x100>", :thumb => "50x50>"}
- # validates_uniqueness_of :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :firstname, :lastname, :birthday, :roles, :role_ids
+  
+  # validates_uniqueness_of :username
 
   belongs_to :team
   has_many :tipps
@@ -22,4 +20,3 @@ class User < ActiveRecord::Base
   end
   has_many :news
 end
-    
