@@ -21,6 +21,7 @@ Spieldaten auswertern
   rake webservice:update
 
 Folgende User wurden bereits mit dem Passwort "password" angelegt:
+* username: admin
 * username: mark
 * username: kai
 * username: paul
