@@ -12,6 +12,7 @@ gem 'devise'
 
 #Adminkrams
 gem 'activeadmin'
+gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
 
 #Webservice
 gem 'savon', '~> 1.0'
@@ -49,10 +50,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
   gem 'therubyracer', '0.10.2', :platform => :ruby
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  
-
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
