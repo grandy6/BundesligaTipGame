@@ -25,7 +25,7 @@ $(function (){
 
 
 	var currentItem = null;
-	$.getJSON("http://localhost:3000/getusers/show.json", 
+	$.getJSON("/getusers/show.json", 
 		function(data) {
 			$.each(data, function(key, val) {
 				if(val.id == $.urlParam('to'))
