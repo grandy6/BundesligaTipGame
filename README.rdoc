@@ -2,6 +2,7 @@
 * Cron-Job
 * Seeds erstellen (einige User, die in Teams sind und Tipps abgegeben haben)
 * TEST SCHREIBEN
+* maybe Roles in activeadmin
 
 == Projekt neu einrichten
 Als DB wird mysql verwendet.
