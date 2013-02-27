@@ -1,0 +1,12 @@
+<div id="content_holder">
+	<h3><%= @user.username %></h3>
+	<div class="row">
+		Name: <%= @user.firstname %> <%= @user.lastname %><br>
+		Geburtstag: <%= @user.birthday %><br>
+	</div>
+	<div class="row">
+		Punkte: <%= @user.points.to_s %><br>
+		Team: <%= link_to @user.team.name, team_path(@user.team) %><br>
+	</div>
+	<%= link_to "Nachricht schreiben", new_message_path(to: @user.id) %>
+</div>

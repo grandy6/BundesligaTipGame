@@ -79,7 +79,7 @@
 		<% end %>
 		<div>
 			Spieltag: <br />
-			<% Match.select(:group_order_id).uniq.each do |m| %>
+			<% Match.select(:group_order_id).order("group_order_id ASC").uniq.each do |m| %>
 			  <%= link_to m.group_order_id, tipp_path(:g => m.group_order_id.to_s) %> | 
 			<% end %>
 		</div>

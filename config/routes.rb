@@ -25,6 +25,8 @@ BundesligaTipGame::Application.routes.draw do
     get 'register' => 'devise/registrations#new', as: :new_user_registration
     get 'profile' => 'devise/registrations#edit', as: :edit_user_registration
   end
+  
+  match 'users/:id' => 'users#show'
 
   get "wsdl/update_and_evaluate"
   get "wsdl/get_all_for_new_saison"

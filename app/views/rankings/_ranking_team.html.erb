@@ -3,7 +3,7 @@
 <% Team.find(:all, order: "points DESC", limit: 10).each do |t| %>
 	<div class="row">
 		<div style="width:50%; float:left">
-			<%=	t.name %>
+			<%= link_to	t.name, team_path(t) %>
 		</div>
 		<div style="width:20%; float:right; text-align: right;">
 			<%= t.points.to_i %> Pkt.

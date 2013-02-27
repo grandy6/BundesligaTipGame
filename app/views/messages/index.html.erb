@@ -1,58 +1,57 @@
 <h1>Messages</h1>
 <div id="tabs">
-    <ul>
-        <li><a href="#tabs-1">Inbox</a></li>
-        <li><a href="#tabs-2">Outbox</a></li>
-    </ul>
-    <div id="tabs-1">
-        <p>
-<table width = "100%">
-<% @inbox.each do |message| %>
-  <tr>
-<!--  # Sucht nach der ID ! -->
-    <td width="30%">Von: <%= User.find(message.from).username %></td>
-    <td>Betreff: <%= message.title %></td>
-    <td width="20px"><%= link_to image_tag('icons/down.png'), '#tabs-1', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
-    </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
-      <%= message.content %><br><br>
-      <!-- Übergibt from_id an das neue To Feld -->
-      <%= link_to "Antworten", new_message_path(:to => message.from) %>
-</td>
-<% end %>
-</table>
-        </p>
-    </div>
-    <div id="tabs-2">
-        <p>
-          <table width = "100%">
-          <% @outbox.each do |message| %>
-            <tr>
-          <!--  # Sucht nach der ID ! -->
-              <td width="30%">
-                An: 
-                <% 
-                  to = ""
-                  @outbox.each do |o|
-                    to = User.find(UserMessage.find(o.id).user_id).username + ", "
-                  end
-                  to = to[0..-2]
-                %>
-                <%= to[0..-2] %>
-
-              </td>
-
-              <td>Betreff: <%= message.title %></td>
-              <td width="20px"><%= link_to image_tag('icons/down.png'), '#', onclick: 'Application.showContent(' + message.id.to_s + ')' %></td>
-              </tr><tr><td id="message_<%= message.id %>" style="display:none" colspan="2">
-                <%= message.content %>
-          </td>
-          <% end %>
-          </table>
-        </p>
-    </div>
+  <ul>
+    <li><a href="#tabs-1">Inbox</a></li>
+    <li><a href="#tabs-2">Outbox</a></li>
+  </ul>
+  <div id="tabs-1">
+    <p>
+    <table width="100%">
+      <% @inbox.each do |message| %>
+      <tr class="row">
+        <!--  # Sucht nach der ID ! -->
+        <td width="30%">Von: <%= User.find(message.from).username %></td>
+        <td>Betreff: <%= message.title %></td>
+        <td width="20px"><%= link_to image_tag('icons/down.png'), '#message_' + message.id.to_s, onclick: 'Application.showContent(this, ' + message.id.to_s + ')' %></td>
+      </tr>
+      <tr>
+        <td id="message_<%= message.id %>" style="display:none" colspan="2">
+          <%= message.content %><br /><br /><br />
+          <!-- Übergibt from_id an das neue To Feld -->
+          <%= link_to "Antworten", new_message_path(:to => message.from) %><br /><br />
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    </p>
+  </div>
+  <div id="tabs-2">
+    <p>
+    <table width="100%">
+      <% @outbox.each do |message| %>
+      <tr>
+        <!--  # Sucht nach der ID ! -->
+        <td width="30%">
+          An: 
+          <% to = "" @outbox.each do |o|
+              to = User.find(UserMessage.find(o.id).user_id).username + ", "
+            end
+            to = to[0..-2]
+            %>
+          <%= to[0..-2] %>
+        </td>
+        <td>Betreff: <%= message.title %></td>
+        <td width="20px"><%= link_to image_tag('icons/down.png'), '#message_' + message.id.to_s, onclick: 'Application.showContent(this, ' + message.id.to_s + ')' %></td>
+      </tr>
+      <tr>
+        <td id="message_<%= message.id %>" style="display:none" colspan="2">
+          <%= message.content %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    </p>
+  </div>
 </div>
-
-
 <br />
-
 <%= link_to 'New Message', new_message_path %>
