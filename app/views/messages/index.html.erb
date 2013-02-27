@@ -33,7 +33,8 @@
         <!--  # Sucht nach der ID ! -->
         <td width="30%">
           An: 
-          <% to = "" @outbox.each do |o|
+          <% to = "" 
+            @outbox.each do |o|
               to = User.find(UserMessage.find(o.id).user_id).username + ", "
             end
             to = to[0..-2]

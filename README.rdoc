@@ -1,25 +1,23 @@
 == To do!
-* Cron-Job
-* Seeds erstellen (einige User, die in Teams sind und Tipps abgegeben haben)
+* Seeds erstellen (evtl. noch ein paar Nachrichten)
 * TEST SCHREIBEN
 * maybe Roles in activeadmin
 
 == Projekt neu einrichten
 Als DB wird mysql verwendet.
 
-Datenbank erstellen
-  rake db:create
-  rake db:migration
-  rake db:seed
+Um das Projekt neu zu erstellen wird lediglich ein Befehl benötigt
+  rake webservice:init
 
-Spieldaten holen
-  rake webservice:new
+Dieser beinhaltet folgende Tasks:
+* rake db:create -- zum erstellen der DB
+* rake db:migrate -- um die Tabellen zu erstellen
+* rake db:seed -- Testdaten werden erstellt
+* rake webservice:new -- Spieldaten werden geladen (Mannschaften und Spielplan)
+* rake webservice:tipp -- erstellt Demo-Tipps für den ersten Spieltag
+* rake webservice:update -- holt sich die Eergebnisse der bereits abgeschlossenen Spiele und wertet die Tipps aus
 
-Damit nun auch einige Tipps mit aufgenommen werden, muss man in der Seed Datei die bereits vorhandenen Seeds entfernen 
-und die auskommentierten Seeds für Tipps einbinden. Danach noch mal rake db:seed ausführen.
-
-Spieldaten auswertern
-  rake webservice:update
+Diese Tasks können natürlich auch einzeld aufgerufen werden.
 
 Folgende User wurden bereits mit dem Passwort "password" angelegt:
 * username: admin
@@ -27,15 +25,3 @@ Folgende User wurden bereits mit dem Passwort "password" angelegt:
 * username: kai
 * username: paul
 * username: rainer
-
-SQL-Code wenn man die DB resetten will/muss, um die Daten neu vom Webservice zu holen
-
-  UPDATE tipps SET checked = 0;
-  UPDATE users SET points = 0;
-  UPDATE teams SET points = 0;
-  UPDATE settings SET last_change = "2013-01-01 00:00:00";
-  TRUNCATE matches;
-  TRUNCATE soccerteams;
-
-
-  
