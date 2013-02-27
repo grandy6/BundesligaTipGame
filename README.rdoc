@@ -10,14 +10,17 @@ Um das Projekt neu zu erstellen wird lediglich ein Befehl benötigt
   rake webservice:init
 
 Dieser beinhaltet folgende Tasks:
-* rake db:create -- zum erstellen der DB
-* rake db:migrate -- um die Tabellen zu erstellen
-* rake db:seed -- Testdaten werden erstellt
-* rake webservice:new -- Spieldaten werden geladen (Mannschaften und Spielplan)
-* rake webservice:tipp -- erstellt Demo-Tipps für den ersten Spieltag
-* rake webservice:update -- holt sich die Eergebnisse der bereits abgeschlossenen Spiele und wertet die Tipps aus
+* `rake db:create` -- zum erstellen der DB
+* `rake db:migrate` -- um die Tabellen zu erstellen
+* `rake db:seed` -- Testdaten werden erstellt
+* `rake webservice:new` -- Spieldaten werden geladen (Mannschaften und Spielplan)
+* `rake webservice:tipp` -- erstellt Demo-Tipps für den ersten Spieltag
+* `rake webservice:update` -- holt sich die Eergebnisse der bereits abgeschlossenen Spiele und wertet die Tipps aus
 
-Diese Tasks können natürlich auch einzeld aufgerufen werden.
+
+Diese Tasks können natürlich auch einzelnd aufgerufen werden.
+
+### Default User
 
 Folgende User wurden bereits mit dem Passwort "password" angelegt:
 * username: admin
