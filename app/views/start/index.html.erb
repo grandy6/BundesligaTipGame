@@ -1,21 +1,3 @@
-
-<% if !@news.nil? %>
-	<h1><%= link_to 'Neuigkeiten', news_index_path %></h1>
-	<br/>
-	<br/> 
-	<article>
-	  <h2><%= link_to @news.title, @news %></h2>
-	  <p class="news_categories">Autor: <%= @news.user.username %> Datum: <%= @news.created_at.strftime("%d.%m.%Y %H:%M") %></p>
-	  <p class="news_content"><%= raw(@news.content) %></p>
-	  <p class="news_categories">Kategorien: 
-	    <% @CategoryString = "" %>
-	    <% @news.category_ids.each do |n| %>
-	      <% @CategoryString += Category.find(n).name + ", " %>
-	    <% end %>
-	    <%= @CategoryString[0..-3] %>
-	  </p>
-	</article>
-<% end %>
 <!-- http://www.iconfinder.com/search/?q=iconset%3Acc_mono_icon_set -->
 <ul class="content_fontcolor_link">
 	<li style="background-image: url(<%= asset_path 'icons/check.png' %>);">
@@ -44,3 +26,21 @@
 	</li>
 </ul>
 <br style="clear:both">
+
+<% if !@news.nil? %>
+	<h1><%= link_to 'Neuigkeiten', news_index_path %></h1>
+	<br/>
+	<br/> 
+	<article>
+	  <h2><%= link_to @news.title, @news %></h2>
+	  <p class="news_categories">Autor: <%= @news.user.username %> Datum: <%= @news.created_at.strftime("%d.%m.%Y %H:%M") %></p>
+	  <p class="news_content"><%= raw(@news.content) %></p>
+	  <p class="news_categories">Kategorien: 
+	    <% @CategoryString = "" %>
+	    <% @news.category_ids.each do |n| %>
+	      <% @CategoryString += Category.find(n).name + ", " %>
+	    <% end %>
+	    <%= @CategoryString[0..-3] %>
+	  </p>
+	</article>
+<% end %>

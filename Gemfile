@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'mysql2'
-# Login
+# Usermanagement
 gem 'devise'
+gem 'cancan'
+gem 'rolify'
+
 # Admin
 gem 'activeadmin'
 # Webservice
@@ -24,8 +27,6 @@ gem 'jquery-rails'
 gem 'capistrano'
 gem 'capistrano-ext'
 
-# Rollenmanagement und Autorisierung
-gem 'cancan'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -48,13 +48,14 @@ Quote.create title: 'Ich habe ihn ausgewechselt, weil ich einen anderen Spieler 
 Quote.create title: 'Wir dürfen jetzt nur nicht den Sand in den Kopf stecken.', author: 'Lothar Matthäus'
 Quote.create title: 'Mein Problem ist, daß ich immer sehr selbstkritisch bin, auch mir selbst gegenüber.', author: 'Andreas Möller'
 
-admin_role = Role.create name: 'admin'
-user_role = Role.create name: 'user'
+['user', 'admin'].each do |role|
+  Role.find_or_create_by_name role
+end
 
-Category.create name: "1. Bundesliga 2012/2013"
+bl = Category.create name: "1. Bundesliga 2012/2013"
 Category.create name: "2. Bundesliga 2012/2013"
 
-Category.create name: "NFL 2012/2013"
+nfl = Category.create name: "NFL 2012/2013"
 Category.create name: "GFL 2013"
 Category.create name: "GFL 2 2013"
 
@@ -65,8 +66,7 @@ admin = User.create :firstname => 'Max',
 						:password => 'password', 
 						:password_confirmation => 'password'
 
-admin.roles << admin_role
-admin.save
+admin.add_role :admin
 
 mark = User.create firstname: 'Mark', 
 						lastname: 'Matzner', 
@@ -74,8 +74,7 @@ mark = User.create firstname: 'Mark',
 						email: 'mark@example.com', 
 						password: 'password', 
 						password_confirmation: 'password'
-mark.roles << user_role
-mark.save
+mark.add_role :user
 
 kai = User.create firstname: 'Kai', 
 						lastname: 'Starke', 
@@ -83,8 +82,7 @@ kai = User.create firstname: 'Kai',
 						email: 'kai@example.com', 
 						password: 'password', 
 						password_confirmation: 'password'
-kai.roles << user_role
-kai.save
+kai.add_role :user
 
 paul = User.create firstname: 'Paul', 
 						lastname: 'Gralla', 
@@ -92,8 +90,7 @@ paul = User.create firstname: 'Paul',
 						email: 'paul@example.com', 
 						password: 'password', 
 						password_confirmation: 'password'
-paul.roles << user_role
-paul.save
+paul.add_role :user
 
 rainer = User.create firstname: 'Rainer', 
 						lastname: 'Bönning', 
@@ -101,8 +98,8 @@ rainer = User.create firstname: 'Rainer',
 						email: 'rainer@example.com', 
 						password: 'password', 
 						password_confirmation: 'password'
-rainer.roles << user_role
-rainer.save
+rainer.add_role :user
+
 
 team1 = Team.create name: "Die Kickers",
 										owner_id: mark.id,
@@ -124,211 +121,9 @@ team2 = Team.create name: "Siegertypen",
 rainer.team = team2
 rainer.save
 
+news = News.create title: "Bald gehen wir live!", 
+						content: "In wenigen Wochen werden wir mit der Bata-Phase beginnen. Wir freuen uns drauf ;)",
+						user_id: admin.id
 
-# #---------- Ab hier beginnen die Seeds für die Tipps ----------
-
-# mark = User.find_by_username('mark')
-# kai = User.find_by_username('thomas')
-# paul = User.find_by_username('paul')
-# rainer = User.find_by_username('rainer')
-
-# match1 = Match.find(1)
-# Tipp.create team1: 2,
-# 						team2: 4,
-# 						user_id: mark.id,
-# 						match_id: match1.id,
-# 						checked: false
-# Tipp.create team1: 3,
-# 						team2: 1,
-# 						user_id: kai.id,
-# 						match_id: match1.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 0,
-# 						user_id: paul.id,
-# 						match_id: match1.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match1.id,
-# 						checked: false
-
-# match2 = Match.find(2)
-# Tipp.create team1: 5,
-# 						team2: 0,
-# 						user_id: mark.id,
-# 						match_id: match2.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 2,
-# 						user_id: kai.id,
-# 						match_id: match2.id,
-# 						checked: false
-# Tipp.create team1: 3,
-# 						team2: 0,
-# 						user_id: paul.id,
-# 						match_id: match2.id,
-# 						checked: false
-# Tipp.create team1: 3,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match2.id,
-# 						checked: false
-
-# match3 = Match.find(3)
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: mark.id,
-# 						match_id: match3.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: kai.id,
-# 						match_id: match3.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 2,
-# 						user_id: paul.id,
-# 						match_id: match3.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match3.id,
-# 						checked: false
-
-# match4 = Match.find(4)
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: mark.id,
-# 						match_id: match4.id,
-# 						checked: false
-# Tipp.create team1: 0,
-# 						team2: 1,
-# 						user_id: kai.id,
-# 						match_id: match4.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 2,
-# 						user_id: paul.id,
-# 						match_id: match4.id,
-# 						checked: false
-# Tipp.create team1: 3,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match4.id,
-# 						checked: false
-
-# match5 = Match.find(5)
-# Tipp.create team1: 0,
-# 						team2: 1,
-# 						user_id: mark.id,
-# 						match_id: match5.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 0,
-# 						user_id: kai.id,
-# 						match_id: match5.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 1,
-# 						user_id: paul.id,
-# 						match_id: match5.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match5.id,
-# 						checked: false
-
-# match6 = Match.find(6)
-# Tipp.create team1: 0,
-# 						team2: 1,
-# 						user_id: mark.id,
-# 						match_id: match6.id,
-# 						checked: false
-# Tipp.create team1: 0,
-# 						team2: 2,
-# 						user_id: kai.id,
-# 						match_id: match6.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 0,
-# 						user_id: paul.id,
-# 						match_id: match6.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 3,
-# 						user_id: rainer.id,
-# 						match_id: match6.id,
-# 						checked: false
-
-# match7 = Match.find(7)
-# Tipp.create team1: 2,
-# 						team2: 0,
-# 						user_id: mark.id,
-# 						match_id: match7.id,
-# 						checked: false
-# Tipp.create team1: 0,
-# 						team2: 0,
-# 						user_id: kai.id,
-# 						match_id: match7.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 0,
-# 						user_id: paul.id,
-# 						match_id: match7.id,
-# 						checked: false
-# Tipp.create team1: 2,
-# 						team2: 1,
-# 						user_id: rainer.id,
-# 						match_id: match7.id,
-# 						checked: false
-
-# match8 = Match.find(8)
-# Tipp.create team1: 0,
-# 						team2: 4,
-# 						user_id: mark.id,
-# 						match_id: match8.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 3,
-# 						user_id: kai.id,
-# 						match_id: match8.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 5,
-# 						user_id: paul.id,
-# 						match_id: match8.id,
-# 						checked: false
-# Tipp.create team1: 0,
-# 						team2: 3,
-# 						user_id: rainer.id,
-# 						match_id: match8.id,
-# 						checked: false
-
-# match9 = Match.find(9)
-# Tipp.create team1: 1,
-# 						team2: 3,
-# 						user_id: mark.id,
-# 						match_id: match9.id,
-# 						checked: false
-# Tipp.create team1: 0,
-# 						team2: 2,
-# 						user_id: kai.id,
-# 						match_id: match9.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 1,
-# 						user_id: paul.id,
-# 						match_id: match9.id,
-# 						checked: false
-# Tipp.create team1: 1,
-# 						team2: 2,
-# 						user_id: rainer.id,
-# 						match_id: match9.id,
-# 						checked: false
-
-
-
+news.categories << bl
+news.categories << nfl
