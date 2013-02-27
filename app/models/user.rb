@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   private
   def set_default_role
-    self.roles ||= Role.find_by_name('user')
+    self.add_role :user
   end
 
 end
