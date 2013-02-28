@@ -27,16 +27,20 @@ $(function (){
 	var currentItem = null;
 	$.getJSON("/getusers/show.json", 
 		function(data) {
-			users = $.urlParam('to').split(',');
 
-			$.each(data, function(key, val) {
-				if($.inArray(val.id.toString(), users) != -1) {
-					if(currentItem == null)
-						currentItem = "";
-					currentItem += '{"id": ' + val.id + ', "name": "' + val.name + '"},';
-				}
-					console.log(currentItem);
-			});
+			users = $.urlParam('to');
+
+			if(users != null) {
+				users = users.split(',');
+
+				currentItem = "";
+
+				$.each(data, function(key, val) {
+					if($.inArray(val.id.toString(), users) != -1) {
+						currentItem += '{"id": ' + val.id + ', "name": "' + val.name + '"},';
+					}
+				});
+			}
 			
 			if(currentItem != null) {
 				currentItem = currentItem.substring(0, currentItem.length -1);
