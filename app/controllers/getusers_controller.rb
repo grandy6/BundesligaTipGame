@@ -1,5 +1,4 @@
 class GetusersController < ApplicationController
-  load_and_authorize_resource
   def show
   	@users = User.where("username like ?", "%#{params[:q]}%") 
    	respond_to do |format|
