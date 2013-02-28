@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'mysql2'
+
 # Usermanagement
 gem 'devise'
 gem 'cancan'
@@ -9,6 +10,7 @@ gem 'rolify'
 
 # Admin
 gem 'activeadmin'
+
 # Webservice
 gem 'savon', '~> 1.0'
 
@@ -31,6 +33,15 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'guard-rspec'
+	gem 'faker'
+	gem 'capybara'
+end 
+
 group :production do
   gem 'pg'
   gem 'activerecord-postgresql-adapter'
