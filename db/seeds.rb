@@ -59,12 +59,13 @@ nfl = Category.create name: "NFL 2012/2013"
 Category.create name: "GFL 2013"
 Category.create name: "GFL 2 2013"
 
-admin = User.create :firstname => 'Max', 
-						:lastname => 'Mustermann', 
-						:username => 'admin', 
-						:email => 'admin@example.com', 
-						:password => 'password', 
-						:password_confirmation => 'password'
+admin = User.create firstname: 'Max', 
+						lastname: 'Mustermann', 
+						username: 'admin', 
+						email: 'admin@example.com', 
+						password: 'password', 
+						password_confirmation: 'password',
+						birthday:  '1970-01-01'
 
 admin.add_role :admin
 
@@ -73,7 +74,8 @@ mark = User.create firstname: 'Mark',
 						username: 'mark', 
 						email: 'mark@example.com', 
 						password: 'password', 
-						password_confirmation: 'password'
+						password_confirmation: 'password',
+						birthday:  '1970-01-01'
 mark.add_role :user
 
 kai = User.create firstname: 'Kai', 
@@ -81,7 +83,8 @@ kai = User.create firstname: 'Kai',
 						username: 'kai', 
 						email: 'kai@example.com', 
 						password: 'password', 
-						password_confirmation: 'password'
+						password_confirmation: 'password',
+						birthday:  '1970-01-01'
 kai.add_role :user
 
 paul = User.create firstname: 'Paul', 
@@ -89,7 +92,8 @@ paul = User.create firstname: 'Paul',
 						username: 'paul', 
 						email: 'paul@example.com', 
 						password: 'password', 
-						password_confirmation: 'password'
+						password_confirmation: 'password',
+						birthday:  '1970-01-01'
 paul.add_role :user
 
 rainer = User.create firstname: 'Rainer', 
@@ -97,7 +101,8 @@ rainer = User.create firstname: 'Rainer',
 						username: 'rainer', 
 						email: 'rainer@example.com', 
 						password: 'password', 
-						password_confirmation: 'password'
+						password_confirmation: 'password',
+						birthday:  '1970-01-01'
 rainer.add_role :user
 
 

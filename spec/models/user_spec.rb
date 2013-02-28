@@ -2,7 +2,7 @@ require 'spec_helper.rb'
 
 describe User do
 	it 'is valid' do
-		user = user.create :firstname => 'Max',
+		user = User.create :firstname => 'Max',
 						:lastname => 'Mustermann', 
 						:username => 'admin', 
 						:email => 'admin@example.com', 
