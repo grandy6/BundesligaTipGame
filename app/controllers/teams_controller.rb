@@ -43,7 +43,8 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     @team.owner_id = current_user.id
-
+    @team.is_public = 1
+    
     respond_to do |format|
       if @team.save
         current_user.team = @team

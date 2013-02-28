@@ -5,9 +5,15 @@ ActiveAdmin.register User do
     column :firstname
     column :lastname
     column :email
+    column "user" do |user|
+      user.has_role?("user") ? "&#10003;".html_safe : "&#10005;".html_safe
+    end
+    column "admin" do |user|
+      user.has_role?("admin") ? "&#10003;".html_safe : "&#10005;".html_safe
+    end
     default_actions
   end
-
+  
   form do |f|
     f.inputs "User Details" do
         f.input :username
@@ -16,5 +22,4 @@ ActiveAdmin.register User do
     end
   f.buttons
   end
-  
 end
