@@ -12,8 +12,8 @@ gem 'devise'
 
 #Adminkrams
 # gem 'activeadmin'
-gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
-
+# gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
+gem 'activeadmin', '~> 0.5.0'
 #Webservice
 gem 'savon', '~> 1.0'
 
@@ -78,6 +78,15 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'guard-rspec'
+	gem 'faker'
+	gem 'capybara'
+end 
+
 group :production do
   gem 'pg'
   gem 'activerecord-postgresql-adapter'
