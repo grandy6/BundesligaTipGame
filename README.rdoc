@@ -1,6 +1,6 @@
 == Heroku
 Diese Web-App ist wurde auf Heroku veröffentlicht und kann über folgende URL besucht werden:
-http://bundesligatipgame.herokuapp.com/start
+http://bundesligatipgame.herokuapp.com/
 
 == Projekt neu einrichten
 Als DB wird mysql verwendet.
