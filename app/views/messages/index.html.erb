@@ -34,10 +34,8 @@
         <td width="30%">
           An: 
           <% to = "" 
-            @outbox.each do |o|
-              UserMessage.where(message_id: o.id).each do |u|
-                to += User.find(u.user_id).username + ", "
-              end
+            UserMessage.where(message_id: message.id).each do |u|
+              to += User.find(u.user_id).username + ", "
             end
             to = to[0..-2]
           %>
