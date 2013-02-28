@@ -17,6 +17,8 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "User Details" do
         f.input :username
+        f.input :firstname
+        f.input :lastname
         f.input :email
         f.input :roles, :as => :check_boxes
     end

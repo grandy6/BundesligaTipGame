@@ -66,8 +66,34 @@ admin = User.create firstname: 'Max',
 						password: 'password', 
 						password_confirmation: 'password',
 						birthday:  '1970-01-01'
-
 admin.add_role :admin
+
+marv = User.create  firstname: 'Marvin', 
+						lastname: 'Caspar', 
+						username: 'Marvin', 
+						email: 'marvin@example.com', 
+						password: 'password1234', 
+						password_confirmation: 'password1234',
+						birthday:  '1970-01-01'
+marv.add_role :admin
+
+tobi = User.create  firstname: 'Tobias', 
+						lastname: 'Prein', 
+						username: 'Tobias', 
+						email: 'tobias@example.com', 
+						password: 'password1234', 
+						password_confirmation: 'password1234',
+						birthday:  '1970-01-01'
+tobi.add_role :admin
+
+till = User.create  firstname: 'Till', 
+						lastname: 'Krüger', 
+						username: 'TIll', 
+						email: 'till@example.com', 
+						password: 'password1234', 
+						password_confirmation: 'password1234',
+						birthday:  '1970-01-01'
+till.add_role :admin
 
 mark = User.create firstname: 'Mark', 
 						lastname: 'Matzner', 
@@ -105,6 +131,18 @@ rainer = User.create firstname: 'Rainer',
 						birthday:  '1970-01-01'
 rainer.add_role :user
 
+team0 = Team.create name: "Die Entwickler dieser geilen Web-App ;)",
+										owner_id: marv.id,
+										is_public: false
+
+marv.team = team0
+marv.save
+
+tobi.team = team0
+tobi.save
+
+till.team = team0
+till.save
 
 team1 = Team.create name: "Die Kickers",
 										owner_id: mark.id,
