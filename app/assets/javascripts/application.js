@@ -27,13 +27,22 @@ $(function (){
 	var currentItem = null;
 	$.getJSON("/getusers/show.json", 
 		function(data) {
+			users = $.urlParam('to').split(',');
+
 			$.each(data, function(key, val) {
-				if(val.id == $.urlParam('to'))
-					currentItem = '[{"id": ' + val.id + ', "name": "' + val.name + '"}]';
+				if($.inArray(val.id.toString(), users) != -1) {
+					if(currentItem == null)
+						currentItem = "";
+					currentItem += '{"id": ' + val.id + ', "name": "' + val.name + '"},';
+				}
+					console.log(currentItem);
 			});
 			
-			if(currentItem != null)
+			if(currentItem != null) {
+				currentItem = currentItem.substring(0, currentItem.length -1);
+				currentItem = "[" + currentItem + "]";
 				currentItem = $.parseJSON(currentItem);
+			}
 
 			$('#message_user_ids').tokenInput('/getusers/show.json', {
 		  	crossDomain: false,  
