@@ -10,8 +10,8 @@ ActiveAdmin.register News do
 
   controller do
     def create
-    @news = News.new(params[:news])
-    @news.user_id = current_user.id
+      @news = News.new(params[:news])
+      @news.user_id = current_user.id
 
       respond_to do |format|
         if @news.save

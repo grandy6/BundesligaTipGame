@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   	# Hier wird konfigutiert wo nach der Exception (Von CanCan)
   	# hingesprungen wird.
     if user_signed_in?
-    	puts current_user.roles.each.name
+    	# puts current_user.roles.each.name
       redirect_to start_index_path, :alert => exception.message 
   	else
   		redirect_to start_index_path, :alert => exception.message

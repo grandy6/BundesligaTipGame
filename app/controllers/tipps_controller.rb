@@ -1,4 +1,5 @@
 class TippsController < ApplicationController
+  load_and_authorize_resource
   # GET /tipps
   # GET /tipps.json
   def index

@@ -35,10 +35,12 @@
           An: 
           <% to = "" 
             @outbox.each do |o|
-              to = User.find(UserMessage.find(o.id).user_id).username + ", "
+              UserMessage.where(message_id: o.id).each do |u|
+                to += User.find(u.user_id).username + ", "
+              end
             end
             to = to[0..-2]
-            %>
+          %>
           <%= to[0..-2] %>
         </td>
         <td>Betreff: <%= message.title %></td>

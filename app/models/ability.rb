@@ -1,13 +1,19 @@
 class Ability
   include CanCan::Ability
   def initialize(user)
-    user ||= User.new # Guest user
+    user ||= User.new
       if user.has_role? :admin
-        # Admins
+        # Adminis
         can :manage, :all
       else if user.has_role? :user
         # Registered users
         can :manage, :all
+        cannot :create,  News
+        cannot :update,  News
+        cannot :destroy,  News
+        cannot :manage, Admin
+      else
+        can :manage, :home
       end
     end
   end
