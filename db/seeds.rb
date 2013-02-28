@@ -88,7 +88,7 @@ tobi.add_role :admin
 
 till = User.create  firstname: 'Till', 
 						lastname: 'Krüger', 
-						username: 'TIll', 
+						username: 'Till', 
 						email: 'till@example.com', 
 						password: 'password1234', 
 						password_confirmation: 'password1234',
