@@ -17,6 +17,9 @@ module Webservice
 			client = get_connection
       setting = get_settings
 
+      setting.current_group_id = get_current_group(setting)
+      setting.save
+
       response = client.request :get_matchdata_by_league_saison, body: { leagueShortcut: setting.league_short, leagueSaison: setting.league_saison }
       if response.success?
         data = response.to_array(:get_matchdata_by_league_saison_response, :get_matchdata_by_league_saison_result, :matchdata)

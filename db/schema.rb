@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227132932) do
+ActiveRecord::Schema.define(:version => 20130228104109) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20130227132932) do
     t.string   "color_main_h3"
     t.string   "color_notice_background"
     t.string   "color_alert_background"
+    t.integer  "current_group_id"
   end
 
   create_table "soccerteams", :force => true do |t|

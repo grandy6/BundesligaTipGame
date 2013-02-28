@@ -1,5 +1,5 @@
 <div id="content_holder">
-	<% if !@matches.nil? %>
+	<% if !@matches.empty? %>
 		<%= form_tag "/tipp", method: "get" do %>
 			<div style="text-align:center; margin-bottom:15px;"><h2><%= @matches[0][:group_name] %></h2></div>
 			<table width="100%">
@@ -80,8 +80,14 @@
 		<div>
 			Spieltag: <br />
 			<% Match.select(:group_order_id).order("group_order_id ASC").uniq.each do |m| %>
-			  <%= link_to m.group_order_id, tipp_path(:g => m.group_order_id.to_s) %> | 
+				<% if m.group_order_id == @setting.current_group_id %>
+					<span style="font-weight:bolder"><%= link_to m.group_order_id, tipp_path(:g => m.group_order_id.to_s) %></span>
+				<% else %>
+			  	<%= link_to m.group_order_id, tipp_path(:g => m.group_order_id.to_s) %> 
+			  <% end %> | 
 			<% end %>
 		</div>
+<% else %>
+	<p>Es ist ein unbekannter Fehler aufgetreten!</p>
 <% end %>
 </div>

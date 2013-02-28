@@ -12,11 +12,12 @@ class StartController < ApplicationController
   		tipp_save
   	# Begegnungen anzeigen
   	else
+      @setting = Setting.first
   		# Spieltag herausfinden, entweder als Paramter übergeben, oder vom WebService holen
   		if params.has_key?(:g)
   			group_id = params[:g]
   		else
-		  	group_id = Webservice::Base.get_current_group(Setting.first) 
+		  	group_id = @setting.current_group_id
         #group_id = WsdlController.new.get_current_group
 		  end
 
